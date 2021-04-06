@@ -9,6 +9,8 @@ router.get('/', (req, res) => {
   res.send('Welcome to the IMDB API!');
 });
 
+//getting all database records
+
 router.get('movie_id', async (req, res) => {
     try {
       const movies = await db.inst377_imdb.findAll();
@@ -81,8 +83,23 @@ router.get('movie_actors', async (req, res) => {
       res.error('Server error');
     }
   });
+//getting individual elemement 
 
-  
+  router.get('api/movie_id/3', (req, response) => {
+    try {
+        const movie = await db.inst377_imdb.findAll({
+            where: {
+                movie_id: req_params.movie_id
+        }
+    });
+    res.json(movie);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
+
+        
   
   
   
