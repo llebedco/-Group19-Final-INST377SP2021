@@ -89,9 +89,7 @@ router.put('/dining', async (req, res) => {
     console.error(err);
     res.error('Server error');
   }
-});
-
-/// /////////////////////////////////
+});///
 /// ////////Meals Endpoints//////////
 /// /////////////////////////////////
 router.get('/meals', async (req, res) => {
@@ -271,3 +269,19 @@ router.get('/custom', async (req, res) => {
 });
 
 export default router;
+
+router.route ('/movie_technicals')
+  .get(async (req, res) => {
+    try {
+      res.json({message: 'Successfully touched movie technicals'});
+
+    //  await sequelize.authenticate();
+      console.log('Connection has been established successfully.');
+    } catch (err) {
+      console.error(err)
+      res.json({message: 'Something went wrong'})
+    }
+    const techs = await db.inst377_imdb.findAll();
+    const reply = techs.length > 0 ? { data: techs } : { message: 'no results found' };
+    res.json(reply);
+  });
