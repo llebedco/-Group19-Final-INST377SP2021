@@ -1,3 +1,6 @@
+/* eslint-disable no-console */
+/* eslint-disable func-names */
+/* eslint-disable prefer-arrow-callback */
 /* eslint-disable camelcase */
 import express from 'express';
 import sequelize from 'sequelize';
@@ -101,18 +104,31 @@ router.get('api/movie_id/3', async (req, res) => {
   }
 });
 
-router.route ('/movie_technicals')
+router.route('/movie_technicals')
   .get(async (req, res) => {
     try {
       res.json({message: 'Successfully touched movie technicals'});
 
-    //  await sequelize.authenticate();
+      //  await sequelize.authenticate();
       console.log('Connection has been established successfully.');
     } catch (err) {
-      console.error(err)
-      res.json({message: 'Something went wrong'})
+      console.error(err);
+      res.json({message: 'Something went wrong'});
     }
     const techs = await db.inst377_imdb.findAll();
     const reply = techs.length > 0 ? { data: techs } : { message: 'no results found' };
     res.json(reply);
+  });
+// add, update, delete movie actors record
+
+app.route('/movie_actors')
+  // eslint-disable-next-line func-names
+  .post(function(req, res) {
+    res.send('Get a random actor');
+  })
+  .put(function(req, res) {
+    res.send('update actor name');
+  })
+  .delete(function(req, res) {
+    res.send('delete the actor');
   });
