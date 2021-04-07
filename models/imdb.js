@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
-  const DiningHall = database.define(
-    'Dining_Hall',
+  const imdb = database.define(
+    'imdb',
     {
       movie_id: {
         type: DataTypes.INTEGER,
@@ -28,5 +28,5 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return DiningHall;
+  return imdb;
 };
