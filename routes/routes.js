@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 
 // getting all database records
 
-router.get('/movie_id', async (req, res) => {
+router.get('/movie', async (req, res) => {
   try {
     const movies = await db.inst377_imdb.findAll();
     const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
@@ -26,16 +26,22 @@ router.get('/movie_id', async (req, res) => {
   }
 });
 
-router.get('movie_actors', async (req, res) => {
-  try {
+router.route('/movie_actors')
+  .get(async (req, res) => {
+    try {
+      res.json({message: 'Successfully touched movie actors'});
+
+      //  await sequelize.authenticate();
+      console.log('Connection has been established successfully.');
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Something went wrong'});
+    }
     const actors = await db.inst377_imdb.findAll();
-    const reply = movies.actors > 0 ? { data: actors } : { message: 'no results found' };
+    const reply = techs.length > 0 ? { data: actors } : { message: 'no results found' };
     res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+  });
+
 router.get('/movie_financials', async (req, res) => {
   try {
     const financials = await db.inst377_imdb.findAll();
@@ -67,27 +73,36 @@ router.get('/movie_facebook_likes', async (req, res) => {
     res.error('Server error');
   }
 });
-router.get('/movie_content', async (req, res) => {
-  try {
+router.route('/movie_content')
+  .get(async (req, res) => {
+    try {
+      res.json({message: 'Successfully touched movie content'});
+      // await sequelize.authenticate();
+      // console.log('Connection has been established successfully.');
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Server error'});
+    }
     const content = await db.inst377_imdb.findAll();
     const reply = content.length > 0 ? { data: content } : { message: 'no results found' };
     res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-router.get('/movie_technicals', async (req, res) => {
-  try {
-    await sequelize.authenticate();
-    console.log('Connection has been established successfully.');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
-  const techs = await db.inst377_imdb.findAll();
-  const reply = techs.length > 0 ? { data: techs } : { message: 'no results found' };
-  res.json(reply);
-});
+  });
+
+router.route('/movie_technicals')
+  .get(async (req, res) => {
+    try {
+      res.json({message: 'Successfully touched movie technicals'});
+      // await sequelize.authenticate();
+      // console.log('Connection has been established successfully.');
+      const techs = await db.inst377_imdb.findAll();
+      const reply = techs.length > 0 ? { data: techs } : { message: 'no results found' };
+      res.json(reply);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
+
 // getting individual elemement
 
 router.get('api/movie_id/3', async (req, res) => {
@@ -104,25 +119,10 @@ router.get('api/movie_id/3', async (req, res) => {
   }
 });
 
-router.route('/movie_technicals')
-  .get(async (req, res) => {
-    try {
-      res.json({message: 'Successfully touched movie technicals'});
-
-      //  await sequelize.authenticate();
-      console.log('Connection has been established successfully.');
-    } catch (err) {
-      console.error(err);
-      res.json({message: 'Something went wrong'});
-    }
-    const techs = await db.inst377_imdb.findAll();
-    const reply = techs.length > 0 ? { data: techs } : { message: 'no results found' };
-    res.json(reply);
-  });
 // add, update, delete movie actors record
 
 app.route('/movie_actors')
-  // eslint-disable-next-line func-names
+// eslint-disable-next-line func-names
   .post(function(req, res) {
     res.send('Get a random actor');
   })
@@ -132,3 +132,4 @@ app.route('/movie_actors')
   .delete(function(req, res) {
     res.send('delete the actor');
   });
+
