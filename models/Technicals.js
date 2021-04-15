@@ -12,7 +12,7 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING,
       },
       duration: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
       },
       aspect_ratio: {
         type: DataTypes.FLOAT,
