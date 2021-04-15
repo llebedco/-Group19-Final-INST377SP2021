@@ -15,24 +15,26 @@ router.get('/', (req, res) => {
 
 // getting all database records
 
-router.get('/movie', async (req, res) => {
-  try {
-    const movies = await db.inst377_imdb.findAll();
-    const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+router
+  .get('/movie', async (req, res) => {
+    try {
+      res.json({message: 'Successfully touched movie'});
+      const movies = await db.inst377_imdb.findAll();
+      const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
+      res.json(reply);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
 
 router.route('/movie_actors')
   .get(async (req, res) => {
     try {
-      res.json({message: 'Successfully touched movie actors'});
-
-      //  await sequelize.authenticate();
-      console.log('Connection has been established successfully.');
+      const actors = await db.MovieActors.findAll();
+      // res.json({message: 'Successfully touched movie actors'});
+      res.json(actors);
+      // console.log('Connection has been established successfully.');
     } catch (err) {
       console.error(err);
       res.json({message: 'Something went wrong'});
@@ -41,6 +43,17 @@ router.route('/movie_actors')
     const reply = techs.length > 0 ? { data: actors } : { message: 'no results found' };
     res.json(reply);
   });
+  // 
+  router.route('/movie_actors/:movie_id')
+  .get(async (req, res) => {
+    try {
+      const actors = await db.MovieActors.findAll({
+        where: {
+          movie_id: req.params.movie_id
+        }
+      });
+      res.json(actors);
+
 
 router.get('/movie_financials', async (req, res) => {
   try {
@@ -105,24 +118,25 @@ router.route('/movie_technicals')
 
 // getting individual elemement
 
-router.get('api/movie_id/3', async (req, res) => {
-  try {
-    const movie = await db.inst377_imdb.findAll({
-      where: {
-        movie_id: req.params.movie_id
-      }
-    });
-    res.json(movie);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+router.route('/movie_actors/:movie_id')
+  .get(async (req, res) => {
+    try {
+      const actors = await db.MovieActors.findAll({
+        where: {
+          movie_id: req.params.movie_id
+        }
+      });
+      res.json(actors);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
+
 
 // add, update, delete movie actors record
 
 app.route('/movie_actors')
-// eslint-disable-next-line func-names
   .post(function(req, res) {
     res.send('Get a random actor');
   })
@@ -133,3 +147,12 @@ app.route('/movie_actors')
     res.send('delete the actor');
   });
 
+router
+  .get('/custom', async (req, res) => {
+    try {
+      res.json({message: 'Successfully touched custom'});
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
