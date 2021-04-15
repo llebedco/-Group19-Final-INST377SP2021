@@ -6,17 +6,17 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         unique: true,
-        primaryKey: true,
+        primaryKey: true
       },
       color: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING
       },
       duration: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING
       },
       aspect_ratio: {
-        type: DataTypes.FLOAT,
-      },
+        type: DataTypes.FLOAT
+      }
     },
     { freezeTableName: true, timestamps: false }
   );
