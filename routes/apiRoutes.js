@@ -7,7 +7,7 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the IMDB API!');
 });
 
 /// /////////////////////////////////
@@ -268,25 +268,96 @@ router.get('/custom', async (req, res) => {
   }
 });
 
-export default router;
+// inst377_imdb database//
+// getting all database records
+router
+  .get('/movie', async (req, res) => {
+    try {
+      res.json({message: 'Successfully touched movie'});
+      const movies = await db.inst377_imdb.findAll();
+      const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
+      res.json(reply);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
 
-router.route('/movie_actors')
+router.route('/actors')
   .get(async (req, res) => {
     try {
-      res.json({message: 'Successfully touched movie actors'});
-
-      //  await sequelize.authenticate();
-      console.log('Connection has been established successfully.');
+      const actors = await db.Actors.findAll({
+      });
+      const reply = actors.length > 0 ? { data: actors } : { message: 'no results found' };
+      res.json(reply);
     } catch (err) {
       console.error(err);
       res.json({message: 'Something went wrong'});
+    } 
+  });
+
+router.route('/actors/:movie_id')
+  .get(async (req, res) => {
+    try {
+      const actors = await db.Actors.findAll({
+        where: {
+          movie_id: req.params.movie_id
+        }
+      });
+      res.json(actors);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
     }
-    const actors = await db.inst377_imdb.findAll();
-    const reply = techs.length > 0 ? { data: actors } : { message: 'no results found' };
+  });
+
+router.get('/movie_financials', async (req, res) => {
+  try {
+    const financials = await db.inst377_imdb.findAll();
+    const reply = financials.length > 0 ? { data: financials } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/movie_IMDB_ratings', async (req, res) => {
+  try {
+    const ratings = await db.inst377_imdb.findAll();
+    const reply = ratings.length > 0 ? { data: ratings } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+router.get('/movie_facebook_likes', async (req, res) => {
+  try {
+    const fb_likes = await db.inst377_imdb.findAll();
+    const reply = fb_likes.length > 0 ? { data: fb_likes } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+router.route('/movie_content')
+  .get(async (req, res) => {
+    try {
+      res.json({message: 'Successfully touched movie content'});
+      // await sequelize.authenticate();
+      // console.log('Connection has been established successfully.');
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Server error'});
+    }
+    const content = await db.inst377_imdb.findAll();
+    const reply = content.length > 0 ? { data: content } : { message: 'no results found' };
     res.json(reply);
   });
 
-  router.route('/movie_technicals')
+router.route('/movie_technicals')
   .get(async (req, res) => {
     try {
       res.json({message: 'Successfully touched movie technicals'});
@@ -301,3 +372,14 @@ router.route('/movie_actors')
     }
   });
 
+router
+  .get('/custom', async (req, res) => {
+    try {
+      res.json({message: 'Successfully touched custom'});
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
+
+export default router;
