@@ -15,5 +15,6 @@ export default {
 };
 
 export {
-  Movies
+  Movies,
+  Technicals
 };
