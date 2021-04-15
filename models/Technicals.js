@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
   const Technicals = sequelize.define(
-    "movie_technicals",
+    'movie_technicals',
     {
       movie_id: {
         type: DataTypes.INTEGER,
