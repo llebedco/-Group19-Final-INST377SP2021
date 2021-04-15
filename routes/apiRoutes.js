@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
@@ -270,18 +271,17 @@ router.get('/custom', async (req, res) => {
 
 // inst377_imdb database//
 // getting all database records
-router
-  .get('/movie', async (req, res) => {
-    try {
-      res.json({message: 'Successfully touched movie'});
-      const movies = await db.inst377_imdb.findAll();
-      const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
-      res.json(reply);
-    } catch (err) {
-      console.error(err);
-      res.error('Server error');
-    }
-  });
+router.get('/movie', async (req, res) => {
+  try {
+    res.json({message: 'Successfully touched movie'});
+    const movies = await db.inst377_imdb.findAll();
+    const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
 router.route('/actors')
   .get(async (req, res) => {
@@ -293,7 +293,7 @@ router.route('/actors')
     } catch (err) {
       console.error(err);
       res.json({message: 'Something went wrong'});
-    } 
+    }
   });
 
 router.route('/actors/:movie_id')
@@ -372,14 +372,48 @@ router.route('/movie_technicals')
     }
   });
 
-router
-  .get('/custom', async (req, res) => {
-    try {
-      res.json({message: 'Successfully touched custom'});
-    } catch (err) {
-      console.error(err);
-      res.error('Server error');
-    }
-  });
+router.get('/custom', async (req, res) => {
+  try {
+    res.json({message: 'Successfully touched custom'});
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+router.get('/Movies/:movie_id', async (req, res) => {
+  try {
+    const Movies = await db.inst377_imdb.findAll({
+      where: {
+        movie_id: req.params.movie_id
+      }
+    });
+    res.json(Movies);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/Movies', async (req, res) => {
+  try {
+    await db.inst377_imdb.update(
+      {
+        movie_title: req.body.movie_title,
+        director_name: req.body.director_name,
+        title_year: req.body.title_year,
+        country: req.body.country
+      },
+      {
+        where: {
+          movie_id: req.body.movie_id
+        }
+      }
+    );
+    res.send('Movie Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
 export default router;

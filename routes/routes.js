@@ -15,8 +15,7 @@ router.get('/', (req, res) => {
 
 // getting all database records
 
-router
-  .get('/movie', async (req, res) => {
+router.get('/movie', async (req, res) => {
     try {
       res.json({message: 'Successfully touched movie'});
       const movies = await db.inst377_imdb.findAll();
@@ -147,8 +146,7 @@ app.route('/movie_actors')
     res.send('delete the actor');
   });
 
-router
-  .get('/custom', async (req, res) => {
+router.get('/custom', async (req, res) => {
     try {
       res.json({message: 'Successfully touched custom'});
     } catch (err) {
@@ -156,3 +154,41 @@ router
       res.error('Server error');
     }
   });
+
+// adding movieModel to apiRoutes
+
+router.get('/Movies/:movie_id', async (req, res) => {
+  try {
+    const Movies = await db.inst377_imdb.findAll({
+      where: {
+        movie_id: req.params.movie_id
+      }
+    });
+    res.json(Movies);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/Movies', async (req, res) => {
+  try {
+    await db.inst377_imdb.update(
+      {
+        movie_title: req.body.movie_title,
+        director_name: req.body.director_name,
+        title_year: req.body.title_year,
+        country: req.body.country
+      },
+      {
+        where: {
+          movie_id: req.body.movie_id
+        }
+      }
+    );
+    res.send('Movie Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
