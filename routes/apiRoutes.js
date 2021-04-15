@@ -396,7 +396,7 @@ router.get('/Movies/:movie_id', async (req, res) => {
 
 router.put('/Movies', async (req, res) => {
   try {
-    await db.inst377_imdb.update(
+    await db.movie_id.update(
       {
         movie_title: req.body.movie_title,
         director_name: req.body.director_name,
