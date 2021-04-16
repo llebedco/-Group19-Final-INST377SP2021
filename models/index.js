@@ -6,7 +6,7 @@ import Actors from './Actors.js';
 import Movies from './movieModel.js';
 import Technicals from './Technicals.js';
 import Ratings from './Ratings.js';
-import MovieFBLikes from './MovieFBLikes';
+import MovieFBLikes from './MovieFBLikes.js';
 
 export default {
   // DietaryRestrictions,
