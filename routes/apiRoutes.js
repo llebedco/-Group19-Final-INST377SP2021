@@ -311,9 +311,9 @@ router.route('/actors/:movie_id')
     }
   });
 
-router.get('/movie_financials', async (req, res) => {
+router.get('/financials', async (req, res) => {
   try {
-    const financials = await db.inst377_imdb.findAll();
+    const financials = await db.Financials.findAll();
     const reply = financials.length > 0 ? { data: financials } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
@@ -321,6 +321,21 @@ router.get('/movie_financials', async (req, res) => {
     res.error('Server error');
   }
 });
+
+router.route('/financials/:movie_id')
+  .get(async (req, res) => {
+    try {
+      const actors = await db.Financials.findAll({
+        where: {
+          movie_id: req.params.movie_id
+        }
+      });
+      res.json(financials);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
 
 router.route('/ratings')
   .get(async (req, res) => {
