@@ -322,6 +322,34 @@ router.get('/movie_financials', async (req, res) => {
   }
 });
 
+router.route('/ratings')
+  .get(async (req, res) => {
+    try {
+      const ratings = await db.Ratings.findAll({
+      });
+      const reply = ratings.length > 0 ? { data: ratings } : { message: 'no results found' };
+      res.json(reply);
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+
+router.route('/ratings/:movie_id')
+  .get(async (req, res) => {
+    try {
+      const ratings = await db.Ratings.findAll({
+        where: {
+          movie_id: req.params.movie_id
+        }
+      });
+      res.json(ratings);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
+
 router.get('/movie_IMDB_ratings', async (req, res) => {
   try {
     const ratings = await db.inst377_imdb.findAll();
