@@ -5,13 +5,15 @@ import Actors from './Actors.js';
 // eslint-disable-next-line import/no-unresolved
 import Movies from './movieModel.js';
 import Technicals from './Technicals.js';
+import Ratings from './IMDBratings.js';
 
 
 export default {
   // DietaryRestrictions,
   // DiningHall,
   // Macros,
-  Actors
+  Actors,
+  Ratings
 };
 
 export {
