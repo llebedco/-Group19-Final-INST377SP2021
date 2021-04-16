@@ -492,12 +492,12 @@ router.get('/custom', async (req, res) => {
     res.error('Server error');
   }
 });
-router.route('/Movies')
+router.route('/movies')
   .get(async (req, res) => {
     try {
-      const Movies = await db.Movies.findAll({
+      const movies = await db.Movies.findAll({
       });
-      const reply = Movies.length > 0 ? { data: Movies } : { message: 'no results found' };
+      const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
       res.json(reply);
     } catch (err) {
       console.error(err);
@@ -505,15 +505,15 @@ router.route('/Movies')
     }
   });
 
-router.route('/Movies/:movie_id')
+router.route('/movies/:movie_id')
   .get(async (req, res) => {
     try {
-      const Movies = await db.Movies.findAll({
+      const movies = await db.Movies.findAll({
         where: {
           movie_id: req.params.movie_id
         }
       });
-      res.json(Movies);
+      res.json(movies);
     } catch (err) {
       console.error(err);
       res.error('Server error');
