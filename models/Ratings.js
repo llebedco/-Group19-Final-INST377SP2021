@@ -15,10 +15,10 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.INTEGER
       },
       num_user_for_reviews: {
-          type: DataTypes.INTEGER
+        type: DataTypes.INTEGER
       },
       num_voted_users: {
-            type: DataTypes.INTEGER
+        type: DataTypes.INTEGER
       }
     },
     { freezeTableName: true, timestamps: false }
