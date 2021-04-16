@@ -350,16 +350,6 @@ router.route('/ratings/:movie_id')
     }
   });
 
-router.get('/movie_IMDB_ratings', async (req, res) => {
-  try {
-    const ratings = await db.inst377_imdb.findAll();
-    const reply = ratings.length > 0 ? { data: ratings } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
 router.get('/movie_facebook_likes', async (req, res) => {
   try {
     const movie_fb_likes = await db.MovieFBLikes.findAll();
