@@ -370,6 +370,7 @@ router.get('/movie_facebook_likes', async (req, res) => {
     res.error('Server error');
   }
 });
+
 router.route('/movie_content')
   .get(async (req, res) => {
     try {
@@ -385,22 +386,20 @@ router.route('/movie_content')
     res.json(reply);
   });
 
-router.route('/technicals')
+  router.route('/technicals')
   .get(async (req, res) => {
     try {
-      res.json({message: 'Successfully touched movie technicals'});
-      // await sequelize.authenticate();
-      // console.log('Connection has been established successfully.');
-      const techs = await db.inst377_imdb.findAll();
-      const reply = techs.length > 0 ? { data: techs } : { message: 'no results found' };
+      const technicals = await db.Technicals.findAll({
+      });
+      const reply = technicals.length > 0 ? { data: technicals } : { message: 'no results found' };
       res.json(reply);
     } catch (err) {
       console.error(err);
-      res.error('Server error');
+      res.json({message: 'Something went wrong'});
     }
   });
 
-  router.route('/technicals/:movie_id')
+router.route('/technicals/:movie_id')
   .get(async (req, res) => {
     try {
       const technicals = await db.Technicals.findAll({
