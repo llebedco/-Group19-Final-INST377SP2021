@@ -362,9 +362,79 @@ router.get('/movie_IMDB_ratings', async (req, res) => {
 });
 router.get('/movie_facebook_likes', async (req, res) => {
   try {
-    const fb_likes = await db.inst377_imdb.findAll();
-    const reply = fb_likes.length > 0 ? { data: fb_likes } : { message: 'no results found' };
+    const movie_fb_likes = await db.MovieFBLikes.findAll();
+    const reply = movie_fb_likes.length > 0 ? { data: movie_fb_likes } : { message: 'no results found' };
     res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/movie_facebook_likes/:movie_id', async (req, res) => {
+  try {
+    const movie_fb_likes = await db.MovieFBLikes.findAll({
+      where: {
+        movie_id: req.params.movie_id
+      }
+    });
+    res.json(movie_fb_likes);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/movie_facebook_likes', async (req, res) => {
+  try {
+    const newData = await db.MovieFBLikes.create({
+      movie_id: req.body.movie_id,
+      director_facebook_likes: req.body.director_facebook_likes,
+      actor_1_facebook_likes: req.body.actor_1_facebook_likes,
+      actor_2_facebook_likes: req.body.actor_2_facebook_likes,
+      actor_3_facebook_likes: req.body.actor_3_facebook_likes,
+      movie_facebook_likes: req.body.movie_facebook_likes,
+      cast_total_facebook_likes: req.body.cast_total_facebook_likes
+    });
+    res.json(newData);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/movie_facebook_likes/:movie_id', async (req, res) => {
+  try {
+    await db.MovieFBLikes.destroy({
+      where: {
+        movie_id: req.params.movie_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/movie_facebook_likes', async (req, res) => {
+  try {
+    await db.MovieFBLikes.update(
+      {
+        director_facebook_likes: req.body.director_facebook_likes,
+        actor_1_facebook_likes: req.body.actor_1_facebook_likes,
+        actor_2_facebook_likes: req.body.actor_2_facebook_likes,
+        actor_3_facebook_likes: req.body.actor_3_facebook_likes,
+        movie_facebook_likes: req.body.movie_facebook_likes,
+        cast_total_facebook_likes: req.body.cast_total_facebook_likes
+      },
+      {
+        where: {
+          movie_id: req.body.movie_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server error');
