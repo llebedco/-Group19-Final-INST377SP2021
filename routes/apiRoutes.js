@@ -456,7 +456,7 @@ router.route('/movie_content')
     res.json(reply);
   });
 
-  router.route('/technicals')
+router.route('/technicals')
   .get(async (req, res) => {
     try {
       const technicals = await db.Technicals.findAll({
@@ -527,5 +527,31 @@ router.put('/Movies', async (req, res) => {
     res.error('Server error');
   }
 });
+router.route('/movies')
+  .get(async (req, res) => {
+    try {
+      const Movie = await db.movieModel.findAll({
+      });
+      const reply = Movie.length > 0 ? { data: Movie } : { message: 'no results found' };
+      res.json(reply);
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
 
+router.route('/movies/:movie_id')
+  .get(async (req, res) => {
+    try {
+      const Movie = await db.movieModel.findAll({
+        where: {
+          movie_id: req.params.movie_id
+        }
+      });
+      res.json(Movie);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
 export default router;
