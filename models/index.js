@@ -15,6 +15,11 @@ export default {
 };
 
 export {
+<<<<<<< Updated upstream
   Movies,
   Technicals
 };
+=======
+  Movies
+};
+>>>>>>> Stashed changes
