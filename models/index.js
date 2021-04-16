@@ -6,7 +6,7 @@ import Actors from './Actors.js';
 import Movies from './movieModel.js';
 import Technicals from './Technicals.js';
 import Ratings from './Ratings.js';
-
+import MovieFBLikes from './MovieFBLikes';
 
 export default {
   // DietaryRestrictions,
@@ -14,7 +14,8 @@ export default {
   // Macros,
   Actors,
   Ratings,
-  Technicals
+  Technicals,
+  MovieFBLikes
 };
 
 export {
