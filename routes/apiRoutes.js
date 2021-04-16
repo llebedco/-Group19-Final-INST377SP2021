@@ -271,10 +271,10 @@ router.get('/custom', async (req, res) => {
 
 // inst377_imdb database//
 // getting all database records
-router.get('/movie', async (req, res) => {
+router.get('/movie_id', async (req, res) => {
   try {
     res.json({message: 'Successfully touched movie'});
-    const movies = await db.inst377_imdb.findAll();
+    const movies = await db.Movies.findAll();
     const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
@@ -492,47 +492,12 @@ router.get('/custom', async (req, res) => {
     res.error('Server error');
   }
 });
-router.get('/Movies/:movie_id', async (req, res) => {
-  try {
-    const Movies = await db.inst377_imdb.findAll({
-      where: {
-        movie_id: req.params.movie_id
-      }
-    });
-    res.json(Movies);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/Movies', async (req, res) => {
-  try {
-    await db.movie_id.update(
-      {
-        movie_title: req.body.movie_title,
-        director_name: req.body.director_name,
-        title_year: req.body.title_year,
-        country: req.body.country
-      },
-      {
-        where: {
-          movie_id: req.body.movie_id
-        }
-      }
-    );
-    res.send('Movie Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-router.route('/movies')
+router.route('/Movies')
   .get(async (req, res) => {
     try {
-      const Movie = await db.movieModel.findAll({
+      const Movies = await db.Movies.findAll({
       });
-      const reply = Movie.length > 0 ? { data: Movie } : { message: 'no results found' };
+      const reply = Movies.length > 0 ? { data: Movies } : { message: 'no results found' };
       res.json(reply);
     } catch (err) {
       console.error(err);
@@ -540,15 +505,15 @@ router.route('/movies')
     }
   });
 
-router.route('/movies/:movie_id')
+router.route('/Movies/:movie_id')
   .get(async (req, res) => {
     try {
-      const Movie = await db.movieModel.findAll({
+      const Movies = await db.Movies.findAll({
         where: {
           movie_id: req.params.movie_id
         }
       });
-      res.json(Movie);
+      res.json(Movies);
     } catch (err) {
       console.error(err);
       res.error('Server error');
