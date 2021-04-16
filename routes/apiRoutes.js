@@ -385,7 +385,7 @@ router.route('/movie_content')
     res.json(reply);
   });
 
-router.route('/movie_technicals')
+router.route('/technicals')
   .get(async (req, res) => {
     try {
       res.json({message: 'Successfully touched movie technicals'});
@@ -394,6 +394,21 @@ router.route('/movie_technicals')
       const techs = await db.inst377_imdb.findAll();
       const reply = techs.length > 0 ? { data: techs } : { message: 'no results found' };
       res.json(reply);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
+
+  router.route('/technicals/:movie_id')
+  .get(async (req, res) => {
+    try {
+      const technicals = await db.Technicals.findAll({
+        where: {
+          movie_id: req.params.movie_id
+        }
+      });
+      res.json(technicals);
     } catch (err) {
       console.error(err);
       res.error('Server error');

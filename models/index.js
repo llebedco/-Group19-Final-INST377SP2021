@@ -13,10 +13,10 @@ export default {
   // DiningHall,
   // Macros,
   Actors,
-  Ratings
+  Ratings,
+  Technicals
 };
 
 export {
   Movies,
-  Technicals
 };
