@@ -10,11 +10,12 @@ h1 {text-align: center;}
   width: 80%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 50px;
 }
 
 .column * {
   box-sizing: border-box;
 }
 .movies {
-  padding: 100px;
+  padding: 50px;
 }
