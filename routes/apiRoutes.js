@@ -325,7 +325,7 @@ router.get('/financials', async (req, res) => {
 router.route('/financials/:movie_id')
   .get(async (req, res) => {
     try {
-      const actors = await db.Financials.findAll({
+      const financials = await db.Financials.findAll({
         where: {
           movie_id: req.params.movie_id
         }
