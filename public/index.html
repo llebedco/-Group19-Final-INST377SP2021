@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +8,46 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <div> 
-        <h1> Group 19 <br>
-            Jacob McIntosh, <br>
-            Larisa Lebedco, <br>
-            Olivia Dissen, <br>
-            Thomas Marmo, <br>
-            Ziyang Lan</h1>  
-    </div>             
-<script src="script.js"></script> 
+    <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
+        <div class="column">
+            <p><a href="http://localhost:3000"><button type="Home" id="home" name="">Home</button>
+        </div>
+        <div class="column">
+            <p><a href="http://localhost:3000/api/actors/"><button type="page 1" id="page 1" name="">Page 1</button></a></p>
+        </div>
+        <div class="column">
+            <p><a href="http://localhost:3000/api/movies/"><button type="page 2" id="page 2" name="">Page 2</button></a></p>
+        </div>
+        <div class="column">
+            <p><a href="http://localhost:3000/api/technicals/"><button type="page 3" id="page 3" name="">Page 3</button></a></p>
+        </div>
+        <div class="column">
+            <p><a href="http://localhost:3000/api/movie_facebook_likes/"><button type="page 4" id="page 4" name="">Page 4</button></a></p>
+        </div>
+
+        <div class="column">
+            <div class="block">
+                <form class="block form" id="search-form" action="">
+                    <label>Search
+                        <input placeholder="" type="text" name="search" id="search">
+                    </label>
+                    <button type="submit" id="submit" name="">SUBMIT</button>
+            </div>
+        </div>
+    </div>
+    <div class="select">
+        <select>
+            <option>Select</option>
+            <option value="Actor">Actor</option>
+            <option value="Movie">Movie</option>
+            <option value="Content">Content</option>
+            <option value="Ratings">Ratings</option>
+        </select>
+    </div>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
