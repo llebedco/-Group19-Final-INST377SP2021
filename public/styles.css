@@ -1,5 +1,5 @@
 h1 {text-align: center;} 
-.body {
+body {
   font: normal 18px/1.5 "Fira Sans", "Times New Roman", sans-serif;
   background:#eee;
   color:rgb(0, 0, 0) ;
@@ -13,9 +13,8 @@ h1 {text-align: center;}
   padding: 50px;
 }
 
-.column * {
-  box-sizing: border-box;
-}
 .movies {
   padding: 50px;
+  display: inline-block;
+  margin: 25px 10px;
 }
