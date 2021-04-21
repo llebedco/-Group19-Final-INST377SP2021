@@ -271,10 +271,10 @@ router.get('/custom', async (req, res) => {
 
 // inst377_imdb database//
 // getting all database records
-router.get('/movie', async (req, res) => {
+router.get('/movie_id', async (req, res) => {
   try {
     res.json({message: 'Successfully touched movie'});
-    const movies = await db.inst377_imdb.findAll();
+    const movies = await db.Movies.findAll();
     const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
@@ -311,9 +311,9 @@ router.route('/actors/:movie_id')
     }
   });
 
-router.get('/movie_financials', async (req, res) => {
+router.get('/financials', async (req, res) => {
   try {
-    const financials = await db.inst377_imdb.findAll();
+    const financials = await db.Financials.findAll();
     const reply = financials.length > 0 ? { data: financials } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
@@ -322,26 +322,130 @@ router.get('/movie_financials', async (req, res) => {
   }
 });
 
-router.get('/movie_IMDB_ratings', async (req, res) => {
-  try {
-    const ratings = await db.inst377_imdb.findAll();
-    const reply = ratings.length > 0 ? { data: ratings } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+router.route('/financials/:movie_id')
+  .get(async (req, res) => {
+    try {
+      const actors = await db.Financials.findAll({
+        where: {
+          movie_id: req.params.movie_id
+        }
+      });
+      res.json(financials);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
+
+router.route('/ratings')
+  .get(async (req, res) => {
+    try {
+      const ratings = await db.Ratings.findAll({
+      });
+      const reply = ratings.length > 0 ? { data: ratings } : { message: 'no results found' };
+      res.json(reply);
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+
+router.route('/ratings/:movie_id')
+  .get(async (req, res) => {
+    try {
+      const ratings = await db.Ratings.findAll({
+        where: {
+          movie_id: req.params.movie_id
+        }
+      });
+      res.json(ratings);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
+
 router.get('/movie_facebook_likes', async (req, res) => {
   try {
-    const fb_likes = await db.inst377_imdb.findAll();
-    const reply = fb_likes.length > 0 ? { data: fb_likes } : { message: 'no results found' };
+    const movie_fb_likes = await db.MovieFBLikes.findAll();
+    const reply = movie_fb_likes.length > 0 ? { data: movie_fb_likes } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
+
+router.get('/movie_facebook_likes/:movie_id', async (req, res) => {
+  try {
+    const movie_fb_likes = await db.MovieFBLikes.findAll({
+      where: {
+        movie_id: req.params.movie_id
+      }
+    });
+    res.json(movie_fb_likes);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/movie_facebook_likes', async (req, res) => {
+  try {
+    const newData = await db.MovieFBLikes.create({
+      movie_id: req.body.movie_id,
+      director_facebook_likes: req.body.director_facebook_likes,
+      actor_1_facebook_likes: req.body.actor_1_facebook_likes,
+      actor_2_facebook_likes: req.body.actor_2_facebook_likes,
+      actor_3_facebook_likes: req.body.actor_3_facebook_likes,
+      movie_facebook_likes: req.body.movie_facebook_likes,
+      cast_total_facebook_likes: req.body.cast_total_facebook_likes
+    });
+    res.json(newData);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/movie_facebook_likes/:movie_id', async (req, res) => {
+  try {
+    await db.MovieFBLikes.destroy({
+      where: {
+        movie_id: req.params.movie_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/movie_facebook_likes', async (req, res) => {
+  try {
+    await db.MovieFBLikes.update(
+      {
+        director_facebook_likes: req.body.director_facebook_likes,
+        actor_1_facebook_likes: req.body.actor_1_facebook_likes,
+        actor_2_facebook_likes: req.body.actor_2_facebook_likes,
+        actor_3_facebook_likes: req.body.actor_3_facebook_likes,
+        movie_facebook_likes: req.body.movie_facebook_likes,
+        cast_total_facebook_likes: req.body.cast_total_facebook_likes
+      },
+      {
+        where: {
+          movie_id: req.body.movie_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 router.route('/movie_content')
   .get(async (req, res) => {
     try {
@@ -357,15 +461,28 @@ router.route('/movie_content')
     res.json(reply);
   });
 
-router.route('/movie_technicals')
+router.route('/technicals')
   .get(async (req, res) => {
     try {
-      res.json({message: 'Successfully touched movie technicals'});
-      // await sequelize.authenticate();
-      // console.log('Connection has been established successfully.');
-      const techs = await db.inst377_imdb.findAll();
-      const reply = techs.length > 0 ? { data: techs } : { message: 'no results found' };
+      const technicals = await db.Technicals.findAll({
+      });
+      const reply = technicals.length > 0 ? { data: technicals } : { message: 'no results found' };
       res.json(reply);
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+
+router.route('/technicals/:movie_id')
+  .get(async (req, res) => {
+    try {
+      const technicals = await db.Technicals.findAll({
+        where: {
+          movie_id: req.params.movie_id
+        }
+      });
+      res.json(technicals);
     } catch (err) {
       console.error(err);
       res.error('Server error');
@@ -380,40 +497,31 @@ router.get('/custom', async (req, res) => {
     res.error('Server error');
   }
 });
-router.get('/Movies/:movie_id', async (req, res) => {
-  try {
-    const Movies = await db.inst377_imdb.findAll({
-      where: {
-        movie_id: req.params.movie_id
-      }
-    });
-    res.json(Movies);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+router.route('/movies')
+  .get(async (req, res) => {
+    try {
+      const movies = await db.Movies.findAll({
+      });
+      const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
+      res.json(reply);
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
 
-router.put('/Movies', async (req, res) => {
-  try {
-    await db.movie_id.update(
-      {
-        movie_title: req.body.movie_title,
-        director_name: req.body.director_name,
-        title_year: req.body.title_year,
-        country: req.body.country
-      },
-      {
+router.route('/movies/:movie_id')
+  .get(async (req, res) => {
+    try {
+      const movies = await db.Movies.findAll({
         where: {
-          movie_id: req.body.movie_id
+          movie_id: req.params.movie_id
         }
-      }
-    );
-    res.send('Movie Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
+      });
+      res.json(movies);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
 export default router;
