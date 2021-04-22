@@ -18,3 +18,9 @@ body {
   display: inline-block;
   margin: 100px 50px;
 }
+
+.chart {
+  padding: 40px;
+  display: inline-block;
+  margin: 10px 50px;
+}

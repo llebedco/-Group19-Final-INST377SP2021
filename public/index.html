@@ -32,6 +32,10 @@
                         4</button></a></p>
         </div>
         <div class="column">
+            <p><a href="http://localhost:3000/api/financials/"><button type="page 5" id="page 5" name="">Page 5</button></a></p>
+        </div>
+
+        <div class="column">
             <div class="block">
                 <form class="block form" id="search-form" action="">
                     <label>Search
@@ -48,6 +52,7 @@
             <option value="Movie">Movie</option>
             <option value="Content">Content</option>
             <option value="Ratings">Ratings</option>
+            <option value="Ratings">Financials</option>
         </select>
     </div>
     <div class="movies"></div>
@@ -56,12 +61,16 @@
     <a href="hi_mom.jpeg"><img src="hi_mom.jpeg" , width='350'></a>
     <a href="godzilla.jpg"><img src="godzilla.jpg" , width='350'></a>
     </div>
-    <ul class="sub-menu">
-        <li id="menu-item-43005" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-43005"><a
-                href="http://localhost:3000/">Home</a></li>
-        <li id="menu-item-42996" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42996"><a
-                href=" ">About us</a></li>
-    </ul>
+    <div class="filter">
+        <select>
+            <option>Select</option>
+            <option value="Highest Grossing">Highest Grossing</option>
+            <option value="Highest Rated">Highest Rated</option>
+            <option value="Most Liked">Most Liked</option>
+        </select>
+    <div class ="chart"></div>
+        <h2>Highest Grossing Movies</h2>
+        <a href="chartplaceholder.jpg"><img src="chartplaceholder.jpg", width = '350'> </a>
     <script src="script.js"></script>
 </body>
 
