@@ -19,3 +19,14 @@ async function windowActions() {
   const result = await getMovie();
   const m = result.data;
 }window.onload = windowActions;
+
+async function getFinance() {
+  const request = await fetch('/api');
+  const financeData = await request.json();
+  return financeData;
+}
+
+async function windowActions() {
+  const result = await getFinance();
+  const f = results.data;
+}window.onload = windowActions;
