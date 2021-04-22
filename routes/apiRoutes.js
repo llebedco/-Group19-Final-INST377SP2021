@@ -524,4 +524,5 @@ router.route('/movies/:movie_id')
       res.error('Server error');
     }
   });
+  
 export default router;
