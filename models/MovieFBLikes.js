@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const MovieFBLikes = sequelize.define(
+  const Movies = sequelize.define(
     'movie_facebook_likes',
     {
       movie_id: {
@@ -30,5 +30,5 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return MovieFBLikes;
+  return Movies;
 };
