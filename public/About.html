@@ -6,8 +6,29 @@
     <title>About</title>
 </head>
 <body>
+    <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
+        <div class="column">
+            <p><a href="http://localhost:3000"><button type="Home" id="home" name="">Home</button>
+        </div>
+        <div class="column">
+            <p><a href="http://localhost:3000/actors.html"><button type="page 1" id="page 1" name="">Actors</button></a>
+            </p>
+        </div>
+        <div class="column">
+            <p><a href="http://localhost:3000/movies.html"><button type="page 2" id="page 2" name="">Movies</button></a>
+            </p>
+        </div>
+        <div class="column">
+            <p><a href="http://localhost:3000/technicals.html"><button type="page 3" id="page 3" name="">Technicals</button></a></p>
+        </div>
+        <div class="column">
+            <p><a href="http://localhost:3000/movie_facebook_likes.html"><button type="page 4" id="page 4" name="">Movie Facebook Likes</button></a></p>
+        </div>
+        <div class="column">
+            <p><a href="http://localhost:3000/financials.html"><button type="page 5" id="page 5" name="">Financials</button></a></p>
+        </div>
     <h1>About us</h1>
-    <p class="The problem that we have decided to solve is a way to 
+    <p>The problem that we have decided to solve is a way to 
     figure out which movies are the most economically successful based 
     on their box office earnings accumulated from their screening cycles. 
     We want to provide valuable information regarding the popularity and 
@@ -20,6 +41,32 @@
     the duration, top grossing films, movie ratings by critics, and several other 
     statistics from the past twenty years. Combining all of this into a convenient 
     and interactive web application, will create an enjoyable experience while 
-    serving as an aide to answer questions one might have about a movie."></p>
+    serving as an aide to answer questions one might have about a movie." </p>
+    <p>Suggestions for Us</p>
+    <form action="" method="GET">
+      <input type='file' name='file'/>
+      <br/>
+      <label for='myname'>Name:</label>
+      <input id='myname' type="text" name='InputName' required placeholder='Please leave preferred name for contacting'/>
+      <br/>
+      <input id='male' type='radio' name='gender' value='male'/>     
+      <label for="male">Male</label>
+      <input id='female' type='radio' name='gender' value='female'/>     
+      <label for="female">Female</label>
+      <input id='other' type='radio' name='gender' value='other'/>     
+      <label for="other">Others</label>
+      <br/>
+      <label for='tele'>Phone#:</label>
+      <input id='tele' type="text" name='Telephone' required/>
+      <br/>
+      <label for="email">Email Address:</label>
+      <input id='email' type='email' name='Email' required/>
+      <br/>
+      <label for='suggestion'>Suggestions:</label>
+      <textarea name='suggestion' id='suggestion' cols='30' rows='10'>
+      </textarea>
+      <br/>
+      <button type='submit'>Submit</button>
+    </form>
 </body>
 </html>
