@@ -29,7 +29,7 @@
             <li><a href="http://localhost:3000/forum.html">Forum</a></li>
         </ul>
     </nav>
-   <!-- <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
+    <!-- <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
         <div class="column">
             <p><a href="http://localhost:3000"><button type="Home" id="home" name="">Home</button>
         </div>
@@ -58,12 +58,37 @@
                         Us</button></a>
             </p>
         </div>-->
-        
-        <div class="footer">
-            <a href="http://localhost:3000/about.html">About us</a>
-        </div>
-          
-        <!--<hr color="black">
+
+    <div class="footer">
+        <a href="http://localhost:3000/about.html">About us</a>
+    </div>
+
+    <h2 class="has-text-centered is-size-1">Highest Grossing Movies</h2>
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <table class="table" id="movie"></table>
+    <section class="section">
+        <div class="container">
+            <br>
+            <div class="table-container">
+                <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>
+                                <title="Movie">Title
+                            </th>
+                            <th>
+                                <title="Budget">Budget
+                            </th>
+                            <th>
+                                <title="Gross">Gross
+                            </th>
+                    </thead>
+                    <tbody class="target">
+                    </tbody>
+                </table>
+            </div>
+    </section>
+    <!--<hr color="black">
         <div class="select">
             <select>
                 <option>Select</option>
@@ -103,7 +128,11 @@
         <div class="chart"></div>
         <h2>Highest Grossing Movies</h2>
         <a href="chartplaceholder.jpg"><img src="chartplaceholder.jpg" , width='350'> </a>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"
+        integrity="sha512-FJ2OYvUIXUqCcPf1stu+oTBlhn54W0UisZB/TNrZaVMHHhYvLBV9jMbvJYtvDe5x/WVaoXZ6KB+Uqe5hT2vlyA=="
+        crossorigin="anonymous"></script>
         <script src="script.js"></script>
         <hr>
 </body>
+
 </html>
