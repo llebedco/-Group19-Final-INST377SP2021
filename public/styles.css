@@ -1,15 +1,80 @@
-h1 {text-align: center;} 
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font: normal 18px/1.5 "Fira Sans", "Times New Roman", sans-serif;
+  width: 100%;
+  min-width: 800px;
+  margin: 0 auto;
+  font: normal 15px/1.5 "Fira Sans", "Times New Roman", sans-serif;
   background:#eee;
   color:rgb(0, 0, 0) ;
   padding: 50px 0;
 }
 
+h1 {
+  font-family: 'Cinzel Decorative', cursive;
+  color: #2a2a2a;
+}
+
+p, input, li {
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #2a2a2a;
+}
+
+.main, .header, nav, .article, .aside, .footer, .section {
+  background-color: rgba(255, 136, 0, 0.5);
+  padding: 1%;
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 80;
+  flex: 5;
+  text-transform: uppercase;
+}
+
+.header {
+  margin-bottom: 10px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+nav {
+  height: 50px;
+  flex: 100%;
+  display: flex;
+}
+
+nav ul {
+  padding: 0;
+  list-style-type: none;
+  flex: 2;
+  display: flex;
+}
+
+nav li {
+  display: inline;
+  text-align: center;
+  flex: 1;
+}
+
+nav a, nav span {
+  display: inline-block;
+  font-size: 1rem;
+  height: 1rem;
+  line-height: 0.7;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: black;
+
+}
 .column {
   width: 80%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 50px 10px;
   padding: 50px;
 }
 
@@ -24,3 +89,33 @@ body {
   display: inline-block;
   margin: 10px 50px;
 }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.content {
+  position: absolute;
+  display: none;
+  z-index: 1;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.suggestion {
+  position: relative;
+  font-size: 30px;
+}
+.content a{
+  color: #eee;
+}
+
+.footer {
+  margin-top: 550px;
+  position: absolute;
+  margin-left: 50px;
+}
+
+ 
