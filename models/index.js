@@ -4,6 +4,7 @@ import Technicals from './Technicals.js';
 import Ratings from './Ratings.js';
 import MovieFBLikes from './MovieFBLikes.js';
 import Financials from './Financials.js';
+import MovieContent from './MovieContent';
 
 export default {
   Actors,
@@ -11,5 +12,6 @@ export default {
   Technicals,
   MovieFBLikes,
   Movies,
-  Financials
+  Financials,
+  MovieContent,
 };
