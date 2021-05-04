@@ -14,128 +14,128 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
-  try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+// router.get('/dining', async (req, res) => {
+// try {
+//   const halls = await db.DiningHall.findAll();
+//   const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+//   res.json(reply);
+// } catch (err) {
+//   console.error(err);
+//   res.error('Server error');
+// }
+// });
 
-router.get('/dining/:hall_id', async (req, res) => {
-  try {
-    const hall = await db.DiningHall.findAll({
-      where: {
-        hall_id: req.params.hall_id
-      }
-    });
+// router.get('/dining/:hall_id', async (req, res) => {
+//   try {
+//     const hall = await db.DiningHall.findAll({
+//       where: {
+//         hall_id: req.params.hall_id
+//       }
+//     });
 
-    res.json(hall);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+//     res.json(hall);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
-  try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
-    });
-    res.json(newDining);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+// router.post('/dining', async (req, res) => {
+//   const halls = await db.DiningHall.findAll();
+//   const currentId = (await halls.length) + 1;
+//   try {
+//     const newDining = await db.DiningHall.create({
+//       hall_id: currentId,
+//       hall_name: req.body.hall_name,
+//       hall_address: req.body.hall_address,
+//       hall_lat: req.body.hall_lat,
+//       hall_long: req.body.hall_long
+//     });
+//     res.json(newDining);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
-router.delete('/dining/:hall_id', async (req, res) => {
-  try {
-    await db.DiningHall.destroy({
-      where: {
-        hall_id: req.params.hall_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+// router.delete('/dining/:hall_id', async (req, res) => {
+//   try {
+//     await db.DiningHall.destroy({
+//       where: {
+//         hall_id: req.params.hall_id
+//       }
+//     });
+//     res.send('Successfully Deleted');
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
-router.put('/dining', async (req, res) => {
-  try {
-    await db.DiningHall.update(
-      {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
-      },
-      {
-        where: {
-          hall_id: req.body.hall_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});///
-/// ////////Meals Endpoints//////////
-/// /////////////////////////////////
-router.get('/meals', async (req, res) => {
-  try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+// router.put('/dining', async (req, res) => {
+//   try {
+//     await db.DiningHall.update(
+//       {
+//         hall_name: req.body.hall_name,
+//         hall_location: req.body.hall_location
+//       },
+//       {
+//         where: {
+//           hall_id: req.body.hall_id
+//         }
+//       }
+//     );
+//     res.send('Successfully Updated');
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });///
+// /// ////////movie Endpoints//////////
+// /// /////////////////////////////////
+// router.get('/movie', async (req, res) => {
+//   try {
+//     const movie = await db.movie.findAll();
+//     res.json(movie);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
-router.get('/meals/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Meals.findAll({
-      where: {
-        meal_id: req.params.meal_id
-      }
-    });
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+// router.get('/movie/:meal_id', async (req, res) => {
+//   try {
+//     const movie = await db.movie.findAll({
+//       where: {
+//         meal_id: req.params.meal_id
+//       }
+//     });
+//     res.json(movie);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
-router.put('/meals', async (req, res) => {
-  try {
-    await db.Meals.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
-        }
-      }
-    );
-    res.send('Meal Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+// router.put('/movie', async (req, res) => {
+//   try {
+//     await db.movie.update(
+//       {
+//         meal_name: req.body.meal_name,
+//         meal_category: req.body.meal_category
+//       },
+//       {
+//         where: {
+//           meal_id: req.body.meal_id
+//         }
+//       }
+//     );
+//     res.send('Meal Successfully Updated');
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
 /// /////////////////////////////////
 /// ////////Macros Endpoints/////////
@@ -150,14 +150,14 @@ router.get('/macros', async (req, res) => {
   }
 });
 
-router.get('/macros/:meal_id', async (req, res) => {
+router.get('/macros/:movie_id', async (req, res) => {
   try {
-    const meals = await db.Macros.findAll({
+    const movies = await db.Macros.findAll({
       where: {
-        meal_id: req.params.meal_id
+        movie_id: req.params.movie_id
       }
     });
-    res.json(meals);
+    res.json(movies);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -169,19 +169,13 @@ router.put('/macros', async (req, res) => {
     // N.B. - this is a good example of where to use code validation to confirm objects
     await db.Macros.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
+        movie_title: req.body.movie_title,
+        budget: req.body.budget,
+        gross: req.body.gross
       },
       {
         where: {
-          meal_id: req.body.meal_id
+          movie_id: req.body.movie_id
         }
       }
     );
@@ -222,7 +216,7 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
+const macrosCustom = 'SELECT `INST377_imdb`.`movie`.`movie_id` AS `movie_id`,`INST377_imdb`.`movie`.`movie_title` AS `movie_title`,`INST377_imdb `.`Macros`.`budget` AS `budget`,`INST377_imdb`.`Macros`.`gross` AS `gross`, FROM(`INST377_imdb`.`movie`JOIN `INST377_imdb`.`Macros`)WHERE(`INST377_imdb`.`movie`.`movie_id` = `INST377_imdb`.`Macros`.`movie_id`)';
 router.get('/table/data', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(macrosCustom, {
@@ -235,14 +229,14 @@ router.get('/table/data', async (req, res) => {
   }
 });
 
-const mealMapCustom = `SELECT hall_name,
+const mealMapCustom = `SELECT _name,
   hall_address,
   hall_lat,
   hall_long,
   meal_name
 FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
+  movie m
+INNER JOIN movie_Locations ml 
   ON m.meal_id = ml.meal_id
 INNER JOIN Dining_Hall d
 ON d.hall_id = ml.hall_id;`;
@@ -282,6 +276,27 @@ router.get('/movie_id', async (req, res) => {
     res.error('Server error');
   }
 });
+
+router.route('/movieGrossing')
+  .get(async (req, res) => {
+    try {
+      const movies = await db.Movies.findAll();
+      const macros = await db.Macros.findAll();
+      const grossing = movies.map((movie) => {
+        const macroEntry = macros.find((macro) => macro.movie_id === movie.movie_id);
+        console.log('movie', movie);
+        console.log('macroEntry', macroEntry);
+        return {
+          ...movie.dataValues,
+          ...macroEntry.dataValues
+        };
+      });
+      res.json({data: movieGrossing});
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
 
 router.route('/actors')
   .get(async (req, res) => {
@@ -391,19 +406,30 @@ router.route('/movie_facebook_likes/:movie_id')
     }
   });
 
-router.route('/movie_content')
+router.get('/movie_content', async (req, res) => {
+  try {
+    const movie_content = await db.MovieContent.findAll();
+    const reply = movie_content.length > 0 ? { data: movie_content } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.route('/movie_content/:movie_id')
   .get(async (req, res) => {
     try {
-      res.json({message: 'Successfully touched movie content'});
-      // await sequelize.authenticate();
-      // console.log('Connection has been established successfully.');
+      const content = await db.MovieContent.findAll({
+        where: {
+          movie_id: req.params.movie_id
+        }
+      });
+      res.json(content);
     } catch (err) {
       console.error(err);
-      res.json({message: 'Server error'});
+      res.error('Server error');
     }
-    const content = await db.inst377_imdb.findAll();
-    const reply = content.length > 0 ? { data: content } : { message: 'no results found' };
-    res.json(reply);
   });
 
 router.route('/technicals')
@@ -442,6 +468,7 @@ router.get('/custom', async (req, res) => {
     res.error('Server error');
   }
 });
+
 router.route('/movies')
   .get(async (req, res) => {
     try {
@@ -469,5 +496,5 @@ router.route('/movies/:movie_id')
       res.error('Server error');
     }
   });
-  
+
 export default router;
