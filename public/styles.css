@@ -36,6 +36,11 @@ h1 {
   text-transform: uppercase;
 }
 
+h2 {
+    position: absolute;
+    font-size: 5pt;
+}
+
 .header {
   margin-bottom: 10px;
   display: flex;
