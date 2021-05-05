@@ -7,10 +7,13 @@
     <title> Group 19 Project Repository</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="styles.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    
     <link rel="icon" href="favicon.png">
 </head>
 
 <body>
+    <!--
     <div class="header">
         <h1>Movie Metadata</h1>
         <a href="#">
@@ -21,16 +24,31 @@
                 <button type="submit" id="submit" name="">SUBMIT</button>
 
     </div>
-    </a>
+    </a>-->
+
+
     <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo">Movie Metadata</label>
         <ul>
             <li><a href="http://localhost:3000">Home</a></li>
+            <li><a href="http://localhost:3000/about.html">About us</a>
             <li><a href="movies.html">Movies</a></li>
             <li><a href="actors.html">Actors</a></li>
             <li><a href="#">Genre</a></li>
             <li><a href="forum.html">Forum</a></li>
+            <li> <form class="block form" id="search-form" action="">
+                <label>Search
+                    <input placeholder="" type="text" name="search" id="search">
+                </label>
+                <button type="submit" id="submit" name="">SUBMIT</button>
+            </li>
         </ul>
     </nav>
+
     <!-- <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
         <div class="column">
             <p><a href="http://localhost:3000"><button type="Home" id="home" name="">Home</button>
@@ -60,6 +78,48 @@
                         Us</button></a>
             </p>
         </div>-->
+<<<<<<< HEAD
+=======
+
+    <div class="editable-alias" style="display:block;; width: 100%;height:100px"></div>
+    <h2 class="has-text-centered is-size-1">Highest Grossing Movies</h2>
+    <div class="select">
+        <select>
+            <option>Select</option>
+            <option value="Actor">Actor</option>
+            <option value="Movie">Movie</option>
+            <option value="Content">Content</option>
+            <option value="Ratings">Ratings</option>
+            <option value="Ratings">Financials</option>
+
+        </select>
+    </div>
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <table class="table" id="movie"></table>
+    <section class="section">
+        <div class="container">
+            <br>
+            <div class="table-container">
+                <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>
+                                <title="Movie">Title
+                            </th>
+                            <th>
+                                <title="Budget">Budget
+                            </th>
+                            <th>
+                                <title="Gross">Gross
+                            </th>
+                    </thead>
+                    <tbody class="target">
+                    </tbody>
+                </table>
+            </div>
+    </section>
+    <!--<hr color="black">
+>>>>>>> 951884af3797b5a9e93707bdd784e4809f3e3aee
         
         <div class="footer">
             <a href="about.html">About Us</a>
@@ -95,13 +155,20 @@
                 href="About.html">About us</a></li>
     </ul>
     <hr>-->
-    <div class="filter">
-        <select>
-            <option>Select</option>
-            <option value="Highest Grossing">Highest Grossing</option>
-            <option value="Highest Rated">Highest Rated</option>
-            <option value="Most Liked">Most Liked</option>
-        </select>
+    <!--<div class="select">
+            <select>
+                <option>Select</option>
+                <option value="Actor">Actor</option>
+                <option value="Movie">Movie</option>
+                <option value="Content">Content</option>
+                <option value="Ratings">Ratings</option>
+                <option value="Ratings">Financials</option>
+
+            </select>
+        </div>-->
+
+
+
         <div class="chart"></div>
         <h2>Highest Grossing Movies</h2>
         <a href="chartplaceholder.jpg"><img src="chartplaceholder.jpg" , width='350'> </a>
