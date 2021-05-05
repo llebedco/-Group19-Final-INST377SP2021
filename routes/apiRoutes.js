@@ -40,23 +40,23 @@ router.get('/', (req, res) => {
 //   }
 // });
 
-// router.post('/dining', async (req, res) => {
-//   const halls = await db.DiningHall.findAll();
-//   const currentId = (await halls.length) + 1;
-//   try {
-//     const newDining = await db.DiningHall.create({
-//       hall_id: currentId,
-//       hall_name: req.body.hall_name,
-//       hall_address: req.body.hall_address,
-//       hall_lat: req.body.hall_lat,
-//       hall_long: req.body.hall_long
-//     });
-//     res.json(newDining);
-//   } catch (err) {
-//     console.error(err);
-//     res.error('Server error');
-//   }
-// });
+router.post('/dining', async (req, res) => {
+  const halls = await db.DiningHall.findAll();
+  const currentId = (await halls.length) + 1;
+  try {
+    const newDining = await db.DiningHall.create({
+      hall_id: currentId,
+      hall_name: req.body.hall_name,
+      hall_address: req.body.hall_address,
+      hall_lat: req.body.hall_lat,
+      hall_long: req.body.hall_long
+    });
+    res.json(newDining);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
 // router.delete('/dining/:hall_id', async (req, res) => {
 //   try {
@@ -91,51 +91,70 @@ router.get('/', (req, res) => {
 //     res.error('Server error');
 //   }
 // });///
-// /// ////////movie Endpoints//////////
-// /// /////////////////////////////////
-// router.get('/movie', async (req, res) => {
-//   try {
-//     const movie = await db.movie.findAll();
-//     res.json(movie);
-//   } catch (err) {
-//     console.error(err);
-//     res.error('Server error');
-//   }
-// });
+/// ////////Movie Endpoints//////////
+/// /////////////////////////////////
+router.get('/movie', async (req, res) => {
+  try {
+    const movies = await db.Movies.findAll();
+    const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
-// router.get('/movie/:meal_id', async (req, res) => {
-//   try {
-//     const movie = await db.movie.findAll({
-//       where: {
-//         meal_id: req.params.meal_id
-//       }
-//     });
-//     res.json(movie);
-//   } catch (err) {
-//     console.error(err);
-//     res.error('Server error');
-//   }
-// });
+router.post('/movie', async (req, res) => {
+  const movies = await db.Movies.findAll();
+  const currentId = (await movies.length) + 1;
+  try {
+    const newMovie = await db.Movies.create({
+      movie_id: currentId,
+      movie_title: req.body.movie_title,
+      director_name: req.body.director_name,
+      title_year: req.body.title_year,
+      country: req.body.country
+    });
+    res.json(newMovie);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
-// router.put('/movie', async (req, res) => {
-//   try {
-//     await db.movie.update(
-//       {
-//         meal_name: req.body.meal_name,
-//         meal_category: req.body.meal_category
-//       },
-//       {
-//         where: {
-//           meal_id: req.body.meal_id
-//         }
-//       }
-//     );
-//     res.send('Meal Successfully Updated');
-//   } catch (err) {
-//     console.error(err);
-//     res.error('Server error');
-//   }
-// });
+router.get('/movie/:meal_id', async (req, res) => {
+  try {
+    const movie = await db.Movie.findAll({
+      where: {
+        meal_id: req.params.meal_id
+      }
+    });
+    res.json(movie);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/movie', async (req, res) => {
+  try {
+    await db.Movies.update(
+      {
+        movie_title: req.body.movie_title,
+        gross: req.body.gross
+      },
+      {
+        where: {
+          movie_id: req.body.movie_id
+        }
+      }
+    );
+    res.send('Movie Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
 /// /////////////////////////////////
 /// ////////Macros Endpoints/////////
