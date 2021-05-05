@@ -13,5 +13,5 @@ export default {
   MovieFBLikes,
   Movies,
   Financials,
-  MovieContent,
+  MovieContent
 };
