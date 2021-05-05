@@ -34,7 +34,7 @@ async function getTitle() {
     .then((response) => response.json())
     .then((movie) => showMovie(movie.results));
   showMovie = (movie) => {
-    const movieDiv = document.querySelector('#movie_title');
+    const movieDiv = document.querySelector('movie_title');
     movie.forEach((movie) => {
       const movieElement = document.createElement('p');
       movieElement.innerText = `Title: ${movie_title.name}`;
