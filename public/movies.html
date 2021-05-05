@@ -1,51 +1,36 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movies page</title>
-</head>
-<body>
-    <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
-        <div class="column">
-            <p><a href="http://localhost:3000"><button type="Home" id="home" name="">Home</button>
-        </div>
-        <!--<div class="filter">
-            <select>
-                <button>Go back</button>
-                <option value="Actors"><div class="column">
-                    <p><a href="http://localhost:3000/actors.html"><button type="page 1" id="page 1" name="">Actors</button></a>
-                    </p></option>
-                <option value="Technicals"><div class="column">
-                    <p><a href="http://localhost:3000/technicals.html"><button type="page 3" id="page 3" name="">Technicals</button></a></p>
-                </div></option>
-                <option value="Facebook Likes"><div class="column">
-                    <p><a href="http://localhost:3000/movie_facebook_likes.html"><button type="page 4" id="page 4" name="">Movie Facebook Likes</button></a></p>
-                </div></option>
-                <option value="Financials"><div class="column">
-                    <p><a href="http://localhost:3000/financials.html"><button type="page 5" id="page 5" name="">Financials</button></a></p>
-                </div><div class="column">
-            </select>
- -->
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+        <link rel="stylesheet" href="styles.css">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        
+        <link rel="icon" href="favicon.png">
+    </head>
+    <body>
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <label class="logo">Movies</label>
+            <ul>
+                <li><a href="http://localhost:3000">Home</a></li>
+                <li><a href="movies.html">Actors</a></li>
+                <li><a href="documentation.html">Documentation</a></li>
+                <li><a href="http://localhost:3000/about.html">About us</a>
+                <li> <form class="block form" id="search-form" action="">
+                    <label>Search
+                        <input placeholder="" type="text" name="search" id="search">
+                    </label>
+                    <button type="submit" id="submit" name="">SUBMIT</button>
+                </li>
+            </ul>
+        </nav>
     
-        <div class="column">
-            <p><a href="http://localhost:3000/actors.html"><button type="page 1" id="page 1" name="">Actors</button></a>
-            </p>
-        </div>
-        <div class="column">
-            <p><a href="http://localhost:3000/technicals.html"><button type="page 3" id="page 3" name="">Technicals</button></a></p>
-        </div>
-        <div class="column">
-            <p><a href="http://localhost:3000/movie_facebook_likes.html"><button type="page 4" id="page 4" name="">Movie Facebook Likes</button></a></p>
-        </div>
-        <div class="column">
-            <p><a href="http://localhost:3000/financials.html"><button type="page 5" id="page 5" name="">Financials</button></a></p>
-        </div>
-        <div class="column">
-            <p><a href="http://localhost:3000/about.html"><button type="page 6" id="page 6" name="">About Us</button></a>
-            </p>
-        </div>
-    <h1>Movies</h1>
-    <p><script src="Movies.js"></script></p>
-</body>
-</html>
+        <p> </p>
+    </body>
+    </html>
