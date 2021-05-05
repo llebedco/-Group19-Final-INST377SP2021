@@ -8,7 +8,9 @@ body {
   min-width: 800px;
   margin: 0 auto;
   font: normal 15px/1.5 "Fira Sans", "Times New Roman", sans-serif;
-  background:#eee;
+  background: url(../images/bgimg.jpg) no-repeat;
+  background-size: cover;
+  height:cover;
   color:rgb(0, 0, 0) ;
   padding: 50px 0;
 }
@@ -23,7 +25,7 @@ p, input, li {
   color: #2a2a2a;
 }
 
-.main, .header, nav, .article, .aside, .footer, .section {
+.main, .header, .article, .aside, .footer, .section {
   background-color: rgba(255, 136, 0, 0.5);
   padding: 1%;
 }
@@ -37,7 +39,7 @@ h1 {
 }
 
 h2 {
-    position: absolute;
+    position: absolute center;
     font-size: 5pt;
 }
 
@@ -47,35 +49,101 @@ h2 {
   flex-flow: row wrap;
 }
 
-nav {
-  height: 50px;
-  flex: 100%;
-  display: flex;
+nav{
+  font-family: 'Cinzel Decorative', cursive;
+  background:black;
+  height: 80px;
+  width: 100%;
 }
-
-nav ul {
-  padding: 0;
-  list-style-type: none;
-  flex: 2;
-  display: flex;
+label.logo{
+  color: white;
+  font-size: 35px;
+  line-height: 80px;
+  padding: 0 100px;
+  font-weight: bold;
 }
-
-nav li {
-  display: inline;
-  text-align: center;
-  flex: 1;
+nav ul{
+  float: right;
+  margin-right: 20px;
 }
-
-nav a, nav span {
+nav ul li{
   display: inline-block;
-  font-size: 1rem;
-  height: 1rem;
-  line-height: 0.7;
+  line-height: 80px;
+  margin: 0 5px;
+}
+nav ul li a{
+  color: white;
+  font-size: 17px;
+  padding: 7px 13px;
+  border-radius: 3px;
   text-transform: uppercase;
-  text-decoration: none;
-  color: black;
+}
+a.active,a:hover{
+  background: whitesmoke;
+  transition: .5s;
+}
+
+nav ul li label{
+  font-size: 17px;
+  color:white;
 
 }
+.checkbtn{
+  font-size: 30px;
+  color: white;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+#check{
+  display: none;
+}
+@media (max-width: 952px){
+  label.logo{
+    font-size: 30px;
+    padding-left: 50px;
+  }
+  nav ul li a{
+    font-size: 16px;
+  }
+}
+@media (max-width: 858px){
+  .checkbtn{
+    display: block;
+  }
+  ul{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: black;
+    top: 80px;
+    left: -100%;
+    text-align: center;
+    transition: all .5s;
+  }
+  nav ul li{
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+  }
+  nav ul li a{
+    font-size: 20px;
+  }
+  a:hover,a.active{
+    background: none;
+    color: #0082e6;
+  }
+  #check:checked ~ ul{
+    left: 0;
+  }
+}
+
+
+
+
+
 .column {
   width: 80%;
   max-width: 1200px;
