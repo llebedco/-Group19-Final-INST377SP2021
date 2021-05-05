@@ -25,7 +25,7 @@ p, input, li {
   color: #2a2a2a;
 }
 
-.main, .header, .article, .aside, .footer, .section {
+.main, .header, .article, .aside, .section {
   background-color: rgba(255, 136, 0, 0.5);
   padding: 1%;
 }
@@ -40,7 +40,18 @@ h1 {
 
 h2 {
     position: absolute center;
-    font-size: 5pt;
+    font-size: 2pt;
+}
+
+h4 {
+  position: absolute center;
+  font-size: 2rem;
+}
+
+h5 {
+  position: relative;
+  font-size: 5mm;
+  text-decoration: underline;
 }
 
 .header {
@@ -140,10 +151,6 @@ nav ul li label{
   }
 }
 
-
-
-
-
 .column {
   width: 80%;
   max-width: 1200px;
@@ -183,12 +190,4 @@ nav ul li label{
 }
 .content a{
   color: #eee;
-}
-
-.footer {
-  margin-top: 550px;
-  position: absolute;
-  margin-left: 50px;
-}
-
- 
+} 
