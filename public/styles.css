@@ -10,7 +10,7 @@ body {
   font: normal 15px/1.5 "Fira Sans", "Times New Roman", sans-serif;
   background: url(../images/bgimg.jpg) no-repeat;
   background-size: cover;
-  height: calc(100vh - 80px);
+  height:cover;
   color:rgb(0, 0, 0) ;
   padding: 50px 0;
 }
