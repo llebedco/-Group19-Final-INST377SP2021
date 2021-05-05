@@ -1,0 +1,88 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <link rel="icon" href="favicon.png">
+</head>
+
+<body>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo">Documentation</label>
+        <ul>
+            <li><a href="http://localhost:3000">Home</a></li>
+            <li><a href="forum.html">Movie</a></li>
+            <li><a href="movies.html">Actor</a></li>
+            <li><a href="http://localhost:3000/about.html">About us</a>
+            <li>
+                <form class="block form" id="search-form" action="">
+                    <label>Search
+                        <input placeholder="" type="text" name="search" id="search">
+                    </label>
+                    <button type="submit" id="submit" name="">SUBMIT</button>
+            </li>
+        </ul>
+    </nav>
+    <div class="tab-pane fade show active" id="pills-user" role="tabpanel" aria-labelledby="pills-user-tab">
+        <h4>User Manual</h4>
+        <h5>Home</h5>
+        <p>Use the home page to navigate our web application. The main navigation consists of schedule search,
+            documentation, and about.</p>
+    </div>
+    <hr>
+    <div class="tab-pane fade show active" id="pills-dev" role="tabpanel" aria-labelledby="pills-dev-tab">
+        <h4>Developer Manual</h4>
+        <h5>How to install application and all dependencies</h5>
+        <p>
+            1. Clone this repository through Github Desktop or through Terminal
+        </p>
+        <p>
+            2. Open repository in VSCode Terminal or Terminal application
+        </p>
+        <p>
+            3. type npm install into terminal window and run.
+        </p>
+        <p>
+            4. The application should now be set to run.
+        </p>
+
+        <h5>How to run application on a server</h5>
+        <p>
+            1. Open repository in VSCode terminal or Terminal application
+        </p>
+        <p>
+            2. Run npm start. There should be no errors.
+        </p>
+        <p>
+            3. In a web browser, go to url: http://localhost:3000/
+        </p>
+
+        <h5>To run tests for software</h5>
+        <p>
+            The are no prewritten tests in the source repository, but you can use Cypress to run your own written tests.
+        </p>
+        <p>
+            1. Open two terminals and make sure you are in the main project directory
+        </p>
+        <p>
+            2. In the first terminal, run npm start
+        </p>
+        <p>
+            3. In the second terminal run npm test
+        </p>
+        <h5>Future Development:</h5>
+        <p></p>
+
+        <p> </p>
+</body>
+
+</html>
