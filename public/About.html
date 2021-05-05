@@ -10,7 +10,22 @@
 </head>
 
 <body>
-    <a href="http://localhost:3000">Home</a>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo">ABOUT US</label>
+        <ul>
+            <li><a href="http://localhost:3000">Home</a></li>
+            <li> <form class="block form" id="search-form" action="">
+                <label>Search
+                    <input placeholder="" type="text" name="search" id="search">
+                </label>
+                <button type="submit" id="submit" name="">SUBMIT</button>
+            </li>
+        </ul>
+    </nav>
     <!-- <div class="column">
             <p><a href="http://localhost:3000/actors.html"><button type="page 1" id="page 1" name="">Actors</button></a>
             </p>
@@ -28,11 +43,8 @@
         <div class="column">
             <p><a href="http://localhost:3000/financials.html"><button type="page 5" id="page 5" name="">Financials</button></a></p>
         </div>-->
-    <div class="header">
-        <h1>About Us</h1>
-    </div>
     
-    <p>The problem that we have decided to solve is a way to
+    <p style='border:10px;vertical-align: middle ; width:50%;background-color: rgba(255, 136, 0, 0.5);font-size:20px';>The problem that we have decided to solve is a way to
         figure out which movies are the most economically successful based
         on their box office earnings accumulated from their screening cycles.
         We want to provide valuable information regarding the popularity and
@@ -46,13 +58,14 @@
         statistics from the past twenty years. Combining all of this into a convenient
         and interactive web application, will create an enjoyable experience while
         serving as an aide to answer questions one might have about a movie." </p>
+
+
     </br>
     <div class="suggestion">
         <p>Suggestions for Us</p>
     </div>
     <form action="" method="GET">
-        <input type='file' name='file'/>
-        <br/>
+
         <label for='myname'>Name:</label>
         <input id='myname' type="text" name='InputName' required
             placeholder='Preferred name'/>
@@ -73,7 +86,7 @@
         <textarea name='suggestion' id='suggestion' cols='80' rows='10'>
       </textarea>
         <br/>
-        <button type='submit'>Submit</button>
+        <button type='submit'>Sent</button>
     </form>
 </body>
 

@@ -8,7 +8,7 @@ body {
   min-width: 800px;
   margin: 0 auto;
   font: normal 15px/1.5 "Fira Sans", "Times New Roman", sans-serif;
-  background: url(bgimg.jpg) no-repeat;
+  background: url(../images/bgimg.jpg) no-repeat;
   background-size: cover;
   height: calc(100vh - 80px);
   color:rgb(0, 0, 0) ;
@@ -140,7 +140,8 @@ nav ul li label{
   }
 }
 
-  
+
+
 
 
 .column {

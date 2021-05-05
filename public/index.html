@@ -35,6 +35,7 @@
         <label class="logo">Movie Metadata</label>
         <ul>
             <li><a href="http://localhost:3000">Home</a></li>
+            <li><a href="http://localhost:3000/about.html">About us</a>
             <li><a href="movies.html">Movies</a></li>
             <li><a href="actors.html">Actors</a></li>
             <li><a href="#">Genre</a></li>
@@ -78,11 +79,19 @@
             </p>
         </div>-->
 
-    <div class="footer">
-        <a href="http://localhost:3000/about.html">About us</a>
-    </div>
     <div class="editable-alias" style="display:block;; width: 100%;height:100px"></div>
     <h2 class="has-text-centered is-size-1">Highest Grossing Movies</h2>
+    <div class="select">
+        <select>
+            <option>Select</option>
+            <option value="Actor">Actor</option>
+            <option value="Movie">Movie</option>
+            <option value="Content">Content</option>
+            <option value="Ratings">Ratings</option>
+            <option value="Ratings">Financials</option>
+
+        </select>
+    </div>
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
     <table class="table" id="movie"></table>
     <section class="section">
@@ -143,13 +152,20 @@
                 href="About.html">About us</a></li>
     </ul>
     <hr>-->
-    <div class="filter">
-        <select>
-            <option>Select</option>
-            <option value="Highest Grossing">Highest Grossing</option>
-            <option value="Highest Rated">Highest Rated</option>
-            <option value="Most Liked">Most Liked</option>
-        </select>
+    <!--<div class="select">
+            <select>
+                <option>Select</option>
+                <option value="Actor">Actor</option>
+                <option value="Movie">Movie</option>
+                <option value="Content">Content</option>
+                <option value="Ratings">Ratings</option>
+                <option value="Ratings">Financials</option>
+
+            </select>
+        </div>-->
+
+
+
         <div class="chart"></div>
         <h2>Highest Grossing Movies</h2>
         <a href="chartplaceholder.jpg"><img src="chartplaceholder.jpg" , width='350'> </a>
