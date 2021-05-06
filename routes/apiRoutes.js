@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 /* eslint-disable no-console */
 import express from 'express';
@@ -153,10 +155,10 @@ router.route('/getBudget')
       res.json({data: wholeMeals});
     } catch (err) {
       console.error(err);
-      res.json({message:'Something went wrong'});
+      res.json({message: 'Something went wrong'});
     }
   });
-  
+
 router.put('/movie', async (req, res) => {
   try {
     await db.Movies.update(
@@ -536,5 +538,17 @@ router.route('/movies/:movie_id')
       res.error('Server error');
     }
   });
-
+async function getTitle() {
+  const repsonse = await fetch('http://localhost:3000/api/Movies')
+    .then((response) => response.json())
+    .then((movie) => showMovie(movie.results));
+  showMovie = (movie) => {
+    const movieDiv = document.querySelector('#movie_title');
+    movie.forEach((movie) => {
+      const movieElement = document.createElement('p');
+      movieElement.innerText = `Title: ${movie_title.name}`;
+      movieDiv.append(movieElement);
+    });
+  };
+}
 export default router;
