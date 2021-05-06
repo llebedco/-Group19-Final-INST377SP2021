@@ -138,15 +138,14 @@ searchInput.addEventListener('change', displayMatches);
 searchInput.addEventListener('keyup', displayMatches);
 
 async function getData() {
-  const data = await fetch('/Movies');
-  const json = await data.json();
+  const json = await moviesData.json();
   movieList = json
 }
 window.onload = getData
 
 
 function findMatches(word) {
-  return movieList.filter(movie => movie.movie_title.toLowerCase().indexOf(word) > -1);
+  return movieList.filter(movie => movies.movie_title.toLowerCase().indexOf(word) > -1);
 }
 
 function displayMatches() {
@@ -154,7 +153,7 @@ function displayMatches() {
   document.querySelector('.suggestions').innerHTML = matchArray.map(movie => {
     return `<li class="">
             <div class="name">${movie.movie_title}</div>
-            <div class="text">${movie.actor}</div>
+            <div class="name">${movie.director}</div>
           </li>`;
   }).join('');
 }
