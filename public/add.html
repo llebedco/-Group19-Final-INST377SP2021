@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="styles.css">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
     <link rel="icon" href="favicon.png">
 </head>
+
 <body>
     <nav>
         <input type="checkbox" id="check">
@@ -18,74 +19,84 @@
         </label>
         <label class="logo">Add/Edit</label>
         <ul>
-            <li><a href="http://localhost:3000">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="movies.html">Movies</a></li>
             <li><a href="actors.html">Actors</a></li>
             <li><a href="documentation.html">Documentation</a></li>
-            <li><a href="http://localhost:3000/about.html">About us</a>
-            <li> <form class="block form" id="search-form" action="">
-                <label>Search
-                    <input placeholder="" type="text" name="search" id="search">
-                </label>
-                <button type="submit" id="submit" name="">SUBMIT</button>
+            <li><a href="about.html">About us</a>
+            <li>
+                <form class="block form" id="search-form" action="">
+                    <label>Search
+                        <input placeholder="" type="text" name="search" id="search">
+                    </label>
+                    <button type="submit" id="submit" name="">SUBMIT</button>
             </li>
         </ul>
     </nav>
-
-    <h1>Add Entry</h1>
-    <form>
-        <label for="moviename">Movie Name:</label>
-        <input type="text" id="mname" name="mname">
-        <br>
-        <label for="actor1">Actor1:</label>
-        <input type="text" id="actor1" name="actor1">
-        <br>
-        <label for="actor2">Actor 2:</label>
-        <input type="text" id="actor2" name="actor2">
-        <br>
-        <label for="actor3">Actor 3:</label>
-        <input type="text" id="actor3" name="actor3">
-        <br>
-        <label for="fin">Financials:</label>
-        <input type="text" id="fin" name="fin">
-        <br>
-        <label for="fb">Facebook Likes:</label>
-        <input type="text" id="fb" name="fb">
-    </form>
-
-    <h1>Edit Entry</h1>
-    <form>
-        <label for="id">ID:</label>
-        <input type="text" id="idnumber" name="idnumber">
-        <br>
-        <label for="moviename">Movie Name:</label>
-        <input type="text" id="mname" name="mname">
-        <br>
-        <label for="actor1">Actor1:</label>
-        <input type="text" id="actor1" name="actor1">
-        <br>
-        <label for="actor2">Actor 2:</label>
-        <input type="text" id="actor2" name="actor2">
-        <br>
-        <label for="actor3">Actor 3:</label>
-        <input type="text" id="actor3" name="actor3">
-        <br>
-        <label for="fin">Financials:</label>
-        <input type="text" id="fin" name="fin">
-        <br>
-        <label for="fb">Facebook Likes:</label>
-        <input type="text" id="fb" name="fb">
-    </form>
-
-    <h1>Delete Entry</h1>
-    <form>
-        <label for="id">ID:</label>
-        <input type="text" id="idnumber" name="idnumber">
-    </form>
-    <p> </p>
-
+    <div class="container">
+        <ul class="flex-outer">
+                <h3>Add Entry</h3>
+            <li>
+                <label for="moviename">Movie Name:</label>
+                <input type="text" id="mname" name="mname">
+            </li>
+            <li>
+                <label for="actor1">Actor1:</label>
+                <input type="text" id="actor1" name="actor1">
+            </li>
+            <li>
+                <label for="actor2">Actor 2:</label>
+                <input type="text" id="actor2" name="actor2">
+            </li>
+            <li>
+                <label for="actor3">Actor 3:</label>
+                <input type="text" id="actor3" name="actor3">
+            </li>
+            <li>
+                <label for="fin">Financials:</label>
+                <input type="text" id="fin" name="fin">
+            </li>
+            <li>
+                <label for="fb">Facebook Likes:</label>
+                <input type="text" id="fb" name="fb">
+            </li>
+                <h3>Edit Entry</h3>
+            <li>
+                <label for="moviename">Movie Name:</label>
+                <input type="text" id="mname" name="mname">
+            </li>
+            
+            <li>
+                <label for="actor1">Actor1:</label>
+                <input type="text" id="actor1" name="actor1">
+            </li>
+            <li>
+                <label for="actor2">Actor 2:</label>
+                <input type="text" id="actor2" name="actor2">
+            </li>
+            <li>
+                <label for="actor3">Actor 3:</label>
+                <input type="text" id="actor3" name="actor3">
+            </li>
+            <li>
+                <label for="fin">Financials:</label>
+                <input type="text" id="fin" name="fin">
+            </li>
+            <li>
+                <label for="fb">Facebook Likes:</label>
+                <input type="text" id="fb" name="fb">
+            </li>
+            <h3>Delete Entry</h3>
+            <li>
+                <label for="id">ID:</label>
+                <input type="text" id="idnumber" name="idnumber">
+            </li>
+            <p> </p>
+        </ul>
+    </div>
     <div class="footer">
         <p>Group 19: Jacob McIntosh, Larisa Lebedco, Olivia Dissen, Thomas Marmo, Ziyang Lan</p>
     </div>
 </body>
+
 </html>
