@@ -30,16 +30,19 @@
                         <input placeholder="" type="text" name="search" id="search">
                     </label>
                     <button type="submit" id="submit" name="">SUBMIT</button>
+                </form>
             </li>
         </ul>
     </nav>
     <div class="container">
         <ul class="flex-outer">
+            <li>
                 <h3>Add Entry</h3>
             <li>
                 <label for="moviename">Movie Name:</label>
                 <input type="text" id="mname" name="mname">
             </li>
+            </li>
             <li>
                 <label for="actor1">Actor1:</label>
                 <input type="text" id="actor1" name="actor1">
@@ -60,12 +63,16 @@
                 <label for="fb">Facebook Likes:</label>
                 <input type="text" id="fb" name="fb">
             </li>
-                <h3>Edit Entry</h3>
+
+            <form action="/api" method="post">
+                <button type="submit" id="submit" name="btn btn-primary">SUBMIT FORM</button>
+            </form>
+
+            <h3>Edit Entry</h3>
             <li>
                 <label for="moviename">Movie Name:</label>
                 <input type="text" id="mname" name="mname">
             </li>
-            
             <li>
                 <label for="actor1">Actor1:</label>
                 <input type="text" id="actor1" name="actor1">
@@ -86,12 +93,19 @@
                 <label for="fb">Facebook Likes:</label>
                 <input type="text" id="fb" name="fb">
             </li>
+            <form action="/api" method="post">
+                <button type="submit" id="submit" name="btn btn-primary">SUBMIT FORM</button>
+            </form>
+
             <h3>Delete Entry</h3>
             <li>
                 <label for="id">ID:</label>
                 <input type="text" id="idnumber" name="idnumber">
+                <p> </p>
             </li>
-            <p> </p>
+            <form action="/api" method="post">
+                <button type="submit" id="submit" name="btn btn-primary">SUBMIT FORM</button>
+            </form>
         </ul>
     </div>
     <div class="footer">
