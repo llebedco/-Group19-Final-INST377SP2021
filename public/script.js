@@ -31,20 +31,19 @@ async function windowActions() {
   const f = results.data;
 } window.onload = windowActions;
 
-function getRandomIntInclusive(min, max) {
-  min = Math.ceil(min);
+function getRandomInt(max) {
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1) + min);
+  return Math.floor(Math.random() * max);
 }
 
-async function getMovie() {
-  const request = await fetch('/api');
+async function getMovies() {
+  const request = await fetch('getBudget/api');
   const moviesData = await request.json();
   return moviesData;
 }
 
 async function windowActions() {
-  const results = await getMovie();
+  const results = await getMovies();
   const movies = results.data;
 
   const movieArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
