@@ -131,3 +131,30 @@ async function windowActions() {
   return selectedMovies;
 }
 window.onload = windowActions
+
+let movieList = []
+const searchInput = document.querySelector('.search');
+searchInput.addEventListener('change', displayMatches);
+searchInput.addEventListener('keyup', displayMatches);
+
+async function getData() {
+  const data = await fetch('/api');
+  const json = await data.json();
+  movieList = json
+}
+window.onload = getData
+
+
+function findMatches(word) {
+  return movieList.filter(movie => movie.movie_title.toLowerCase().indexOf(word) > -1);
+}
+
+function displayMatches() {
+  const matchArray = findMatches(searchInput.value);
+  document.querySelector('.suggestions').innerHTML = matchArray.map(movie => {
+    return `<li class="">
+            <div class="name">${movie.movie_title}</div>
+            <div class="text">${movie.actor}</div>
+          </li>`;
+  }).join('');
+}
