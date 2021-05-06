@@ -138,7 +138,7 @@ searchInput.addEventListener('change', displayMatches);
 searchInput.addEventListener('keyup', displayMatches);
 
 async function getData() {
-  const data = await fetch('/api');
+  const data = await fetch('/Movies');
   const json = await data.json();
   movieList = json
 }
