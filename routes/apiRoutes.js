@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 /* eslint-disable no-console */
 import express from 'express';
@@ -538,5 +540,17 @@ router.route('/movies/:movie_id')
       res.error('Server error');
     }
   });
-
+async function getTitle() {
+  const repsonse = await fetch('http://localhost:3000/api/Movies')
+    .then((response) => response.json())
+    .then((movie) => showMovie(movie.results));
+  showMovie = (movie) => {
+    const movieDiv = document.querySelector('#movie_title');
+    movie.forEach((movie) => {
+      const movieElement = document.createElement('p');
+      movieElement.innerText = `Title: ${movie_title.name}`;
+      movieDiv.append(movieElement);
+    });
+  };
+}
 export default router;
