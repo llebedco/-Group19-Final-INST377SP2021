@@ -31,19 +31,20 @@ async function windowActions() {
   const f = results.data;
 } window.onload = windowActions;
 
-function getRandomInt(max) {
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-async function getMovies() {
-  const request = await fetch('getBudget/api');
+async function getMovie() {
+  const request = await fetch('/api');
   const moviesData = await request.json();
   return moviesData;
 }
 
 async function windowActions() {
-  const results = await getMovies();
+  const results = await getMovie();
   const movies = results.data;
 
   const movieArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -115,7 +116,7 @@ async function windowActions() {
           { label: selectedMovies[9].movie_title, y: selectedMovies[9].budget }
         ]
       }, 
-    });
+      ]});
 
     chart.render();
     function toggleDataSeries(e) {
