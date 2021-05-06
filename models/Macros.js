@@ -8,33 +8,33 @@ export default (sequelize, DataTypes) => {
         unique: true,
         primaryKey: true
       },
-      calories: {
+      budget: {
         type: DataTypes.DOUBLE
       },
-      serving_size: {
+      gross: {
         type: DataTypes.DOUBLE
       },
-      cholesterol: {
-        type: DataTypes.INTEGER
-      },
-      sodium: {
-        type: DataTypes.DOUBLE
-      },
-      carbs: {
-        type: DataTypes.DOUBLE
-      },
-      protein: {
-        type: DataTypes.DOUBLE
-      },
-      meal_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-      },
-      fat: {
-        type: DataTypes.DOUBLE
-      }
-    },
-    { freezeTableName: true, timestamps: false }
+  //     cholesterol: {
+  //       type: DataTypes.INTEGER
+  //     },
+  //     sodium: {
+  //       type: DataTypes.DOUBLE
+  //     },
+  //     carbs: {
+  //       type: DataTypes.DOUBLE
+  //     },
+  //     protein: {
+  //       type: DataTypes.DOUBLE
+  //     },
+  //     meal_id: {
+  //       type: DataTypes.INTEGER,
+  //       allowNull: false
+  //     },
+  //     fat: {
+  //       type: DataTypes.DOUBLE
+  //     }
+  //   },
+  //   { freezeTableName: true, timestamps: false }
   );
   return Macros;
 };
