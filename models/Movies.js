@@ -27,6 +27,7 @@ export default (sequelize, DataTypes) => {
 
   return Movies;
 };
+<<<<<<< HEAD
 
 // async function getTitle() {
 //   const repsonse = await fetch('http://localhost:3000/api/Movies')
@@ -41,3 +42,5 @@ export default (sequelize, DataTypes) => {
 //     });
 //   };
 // }
+=======
+>>>>>>> 8dc949cf1e04e404598e54d23b5584ffb90bcd3d
