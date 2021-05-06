@@ -21,22 +21,32 @@ async function getFinance() {
 //   const f = results.data;
 // } window.onload = windowActions;
 
-function getRandomInt(max) {
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+<<<<<<< HEAD
 async function getMovies() {
   const request = await fetch('api/getBudget');
+=======
+async function getMovie() {
+  const request = await fetch('/api');
+>>>>>>> 8dc949cf1e04e404598e54d23b5584ffb90bcd3d
   const moviesData = await request.json();
   return moviesData;
 }
 async function windowActions() {
+<<<<<<< HEAD
   // const result = await getMovie();
   // const m = result.data;
   // const results = await getActor();
   // const a = results.data;
   const results = await getMovies();
+=======
+  const results = await getMovie();
+>>>>>>> 8dc949cf1e04e404598e54d23b5584ffb90bcd3d
   const movies = results.data;
   console.log(movies);
 
@@ -108,9 +118,14 @@ async function windowActions() {
           { label: selectedMovies[8].movie_title, y: selectedMovies[8].budget },
           { label: selectedMovies[9].movie_title, y: selectedMovies[9].budget }
         ]
+<<<<<<< HEAD
       }
       ]
     });
+=======
+      }, 
+      ]});
+>>>>>>> 8dc949cf1e04e404598e54d23b5584ffb90bcd3d
 
     chart.render();
     function toggleDataSeries(e) {
@@ -124,6 +139,7 @@ async function windowActions() {
   });
   return selectedMovies;
 }
+<<<<<<< HEAD
 
 // form.addEventListener ('submit', async (event) => {
 //   event.preventDefault();
@@ -131,3 +147,32 @@ async function windowActions() {
 //   const post = await fetch('/api/getBudget')
 // })
 // window.onload = windowActions
+=======
+window.onload = windowActions
+
+let movieList = []
+const searchInput = document.querySelector('.search');
+searchInput.addEventListener('change', displayMatches);
+searchInput.addEventListener('keyup', displayMatches);
+
+async function getData() {
+  const json = await moviesData.json();
+  movieList = json
+}
+window.onload = getData
+
+
+function findMatches(word) {
+  return movieList.filter(movie => movies.movie_title.toLowerCase().indexOf(word) > -1);
+}
+
+function displayMatches() {
+  const matchArray = findMatches(searchInput.value);
+  document.querySelector('.suggestions').innerHTML = matchArray.map(movie => {
+    return `<li class="">
+            <div class="name">${movie.movie_title}</div>
+            <div class="name">${movie.director}</div>
+          </li>`;
+  }).join('');
+}
+>>>>>>> 8dc949cf1e04e404598e54d23b5584ffb90bcd3d
