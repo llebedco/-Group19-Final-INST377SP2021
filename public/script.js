@@ -4,21 +4,11 @@ async function getActor() {
   return actorsData;
 }
 
-async function windowActions() {
-  const results = await getActor();
-  const a = results.data;
-} window.onload = windowActions;
-
 async function getMovie() {
   const request = await fetch('/api');
   const moviesData = await request.json();
   return moviesData;
 }
-
-async function windowActions() {
-  const result = await getMovie();
-  const m = result.data;
-} window.onload = windowActions;
 
 async function getFinance() {
   const request = await fetch('/api');
@@ -26,10 +16,10 @@ async function getFinance() {
   return financeData;
 }
 
-async function windowActions() {
-  const result = await getFinance();
-  const f = results.data;
-} window.onload = windowActions;
+// async function windowActions() {
+//   const result = await getFinance();
+//   const f = results.data;
+// } window.onload = windowActions;
 
 function getRandomInt(max) {
   max = Math.floor(max);
@@ -37,14 +27,18 @@ function getRandomInt(max) {
 }
 
 async function getMovies() {
-  const request = await fetch('getBudget/api');
+  const request = await fetch('api/getBudget');
   const moviesData = await request.json();
   return moviesData;
 }
-
 async function windowActions() {
+  // const result = await getMovie();
+  // const m = result.data;
+  // const results = await getActor();
+  // const a = results.data;
   const results = await getMovies();
   const movies = results.data;
+  console.log(movies);
 
   const movieArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const selectedMovies = movieArray.map((element) => {
@@ -114,7 +108,8 @@ async function windowActions() {
           { label: selectedMovies[8].movie_title, y: selectedMovies[8].budget },
           { label: selectedMovies[9].movie_title, y: selectedMovies[9].budget }
         ]
-      }, 
+      }
+      ]
     });
 
     chart.render();
@@ -129,4 +124,10 @@ async function windowActions() {
   });
   return selectedMovies;
 }
-window.onload = windowActions
+
+// form.addEventListener ('submit', async (event) => {
+//   event.preventDefault();
+//   console.info('submitted form', event.target);
+//   const post = await fetch('/api/getBudget')
+// })
+// window.onload = windowActions
