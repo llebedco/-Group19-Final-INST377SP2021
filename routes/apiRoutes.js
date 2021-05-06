@@ -136,6 +136,27 @@ router.get('/movie/:meal_id', async (req, res) => {
   }
 });
 
+router.route('/getBudget')
+  .get(async (req, res) => {
+    try {
+      const movies = await db.Movies.findAll();
+      const macros = await db.Macros.findAll();
+      const wholeMeals = movies.map((movie_title) => {
+        const macroEntry = macros.find((macro) => macro.movie_id === movie_id.movie_id);
+        console.log('movie', movie_title);
+        console.log('macroEntry', macroEntry);
+        return {
+          ...movie_title.dataValues,
+          ...macroEntry.dataValues
+        };
+      });
+      res.json({data: wholeMeals});
+    } catch (err) {
+      console.error(err);
+      res.json({message:'Something went wrong'});
+    }
+  });
+  
 router.put('/movie', async (req, res) => {
   try {
     await db.Movies.update(
