@@ -1,39 +1,40 @@
-async function getActor() {
-  const request = await fetch('/api');
-  const actorsData = await request.json();
-  return actorsData;
-}
+// async function getActor() {
+//   const request = await fetch('/api');
+//   const actorsData = await request.json();
+//   return actorsData;
+// }
 
-async function windowActions() {
-  const results = await getActor();
-  const a = results.data;
-} window.onload = windowActions;
+// async function windowActions() {
+//   const results = await getActor();
+//   const a = results.data;
+// } window.onload = windowActions;
 
-async function getMovie() {
-  const request = await fetch('/api');
-  const moviesData = await request.json();
-  return moviesData;
-}
+// async function getMovie() {
+//   const request = await fetch('/api');
+//   const moviesData = await request.json();
+//   return moviesData;
+// }
 
-async function windowActions() {
-  const result = await getMovie();
-  const m = result.data;
-} window.onload = windowActions;
+// async function windowActions() {
+//   const result = await getMovie();
+//   const m = result.data;
+// } window.onload = windowActions;
 
-async function getFinance() {
-  const request = await fetch('/api');
-  const financeData = await request.json();
-  return financeData;
-}
+// async function getFinance() {
+//   const request = await fetch('/api');
+//   const financeData = await request.json();
+//   return financeData;
+// }
 
-async function windowActions() {
-  const result = await getFinance();
-  const f = results.data;
-} window.onload = windowActions;
+// async function windowActions() {
+//   const result = await getFinance();
+//   const f = results.data;
+// } window.onload = windowActions;
 
-function getRandomIntInclusive(max) {
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 async function getMovies() {
@@ -45,17 +46,20 @@ async function getMovies() {
 async function windowActions() {
   const results = await getMovies();
   const movies = results.data;
+  
 
   const movieArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const selectedMovies = movieArray.map((element) => {
     const random = getRandomIntInclusive(0, movies.length - 1);
     return movies[random];
   });
+  
   console.table(selectedMovies);
   const info = document.querySelector('.target');
   selectedMovies.forEach((element) => {
     const rows = document.createElement('tr');
     rows.innerHTML = `
+      <td>${element.movie_id}</td>
       <td>${element.movie_title}</td>
       <td>${element.budget}</td>
       <td>${element.gross}</td>`;
