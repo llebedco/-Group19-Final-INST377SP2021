@@ -32,18 +32,18 @@ The are no prewritten tests in the source repository, but you can use Cypress to
 ## Server application APIs
 /api - API route for 
 
-GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
-POST - 
-PUT - returns response 'Got a PUT request at /api'.
+* GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
+* POST - 
+* PUT - returns response 'Got a PUT request at /api'.
 
 
-GET - Logs to console response query from URL. returns response 'Got a GET request from /api'. 
-POST -  
-PUT - returns response 'Got a PUT request at /api'.
+* GET - Logs to console response query from URL. returns response 'Got a GET request from /api'. 
+* POST -  
+* PUT - returns response 'Got a PUT request at /api'.
 
 ## Known Bugs and Future Development
-Bugs:
-There may be null values in the 
+# Bugs:
+* There may be null values in the movie and movie_financials data. 
 
 ## Future Development:
 * Handle null values in movie and movie_financials data.
