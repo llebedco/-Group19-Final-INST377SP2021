@@ -37,7 +37,7 @@ POST -
 PUT - returns response 'Got a PUT request at /api'.
 
 
-GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
+GET - Logs to console response query from URL. returns response 'Got a GET request from /api'. 
 POST -  
 PUT - returns response 'Got a PUT request at /api'.
 

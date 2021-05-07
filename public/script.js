@@ -46,14 +46,13 @@ async function getMovies() {
 async function windowActions() {
   const results = await getMovies();
   const movies = results.data;
-  
 
   const movieArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const selectedMovies = movieArray.map((element) => {
     const random = getRandomIntInclusive(0, movies.length - 1);
     return movies[random];
   });
-  
+
   console.table(selectedMovies);
   const info = document.querySelector('.target');
   selectedMovies.forEach((element) => {
@@ -118,11 +117,10 @@ async function windowActions() {
           { label: selectedMovies[8].movie_title, y: selectedMovies[8].budget },
           { label: selectedMovies[9].movie_title, y: selectedMovies[9].budget }
         ]
-      }, 
-    ]
+      },
+      ]
     });
 
-    
     chart.render();
     function toggleDataSeries(e) {
       if (typeof (e.dataSeries.visible) === 'undefined' || e.DataSeries.visible) {
