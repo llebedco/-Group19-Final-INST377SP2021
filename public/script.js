@@ -4,11 +4,21 @@ async function getActor() {
   return actorsData;
 }
 
+async function windowActions() {
+  const results = await getActor();
+  const a = results.data;
+} window.onload = windowActions;
+
 async function getMovie() {
   const request = await fetch('/api');
   const moviesData = await request.json();
   return moviesData;
 }
+
+async function windowActions() {
+  const result = await getMovie();
+  const m = result.data;
+} window.onload = windowActions;
 
 async function getFinance() {
   const request = await fetch('/api');
@@ -16,39 +26,25 @@ async function getFinance() {
   return financeData;
 }
 
-// async function windowActions() {
-//   const result = await getFinance();
-//   const f = results.data;
-// } window.onload = windowActions;
+async function windowActions() {
+  const result = await getFinance();
+  const f = results.data;
+} window.onload = windowActions;
 
-function getRandomIntInclusive(min, max) {
-  min = Math.ceil(min);
+function getRandomInt(max) {
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1) + min);
+  return Math.floor(Math.random() * max);
 }
 
-<<<<<<< HEAD
 async function getMovies() {
   const request = await fetch('api/getBudget');
-=======
-async function getMovie() {
-  const request = await fetch('/api');
->>>>>>> 8dc949cf1e04e404598e54d23b5584ffb90bcd3d
   const moviesData = await request.json();
   return moviesData;
 }
+
 async function windowActions() {
-<<<<<<< HEAD
-  // const result = await getMovie();
-  // const m = result.data;
-  // const results = await getActor();
-  // const a = results.data;
   const results = await getMovies();
-=======
-  const results = await getMovie();
->>>>>>> 8dc949cf1e04e404598e54d23b5584ffb90bcd3d
   const movies = results.data;
-  console.log(movies);
 
   const movieArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const selectedMovies = movieArray.map((element) => {
@@ -118,14 +114,8 @@ async function windowActions() {
           { label: selectedMovies[8].movie_title, y: selectedMovies[8].budget },
           { label: selectedMovies[9].movie_title, y: selectedMovies[9].budget }
         ]
-<<<<<<< HEAD
-      }
-      ]
-    });
-=======
       }, 
-      ]});
->>>>>>> 8dc949cf1e04e404598e54d23b5584ffb90bcd3d
+    });
 
     chart.render();
     function toggleDataSeries(e) {
@@ -139,40 +129,5 @@ async function windowActions() {
   });
   return selectedMovies;
 }
-<<<<<<< HEAD
 
-// form.addEventListener ('submit', async (event) => {
-//   event.preventDefault();
-//   console.info('submitted form', event.target);
-//   const post = await fetch('/api/getBudget')
-// })
-// window.onload = windowActions
-=======
 window.onload = windowActions
-
-let movieList = []
-const searchInput = document.querySelector('.search');
-searchInput.addEventListener('change', displayMatches);
-searchInput.addEventListener('keyup', displayMatches);
-
-async function getData() {
-  const json = await moviesData.json();
-  movieList = json
-}
-window.onload = getData
-
-
-function findMatches(word) {
-  return movieList.filter(movie => movies.movie_title.toLowerCase().indexOf(word) > -1);
-}
-
-function displayMatches() {
-  const matchArray = findMatches(searchInput.value);
-  document.querySelector('.suggestions').innerHTML = matchArray.map(movie => {
-    return `<li class="">
-            <div class="name">${movie.movie_title}</div>
-            <div class="name">${movie.director}</div>
-          </li>`;
-  }).join('');
-}
->>>>>>> 8dc949cf1e04e404598e54d23b5584ffb90bcd3d
