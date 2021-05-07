@@ -1,7 +1,3 @@
-/* eslint-disable no-shadow */
-/* eslint-disable no-unused-vars */
-/* eslint-disable camelcase */
-/* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
 
@@ -12,87 +8,6 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.send('Welcome to the IMDB API!');
 });
-
-/// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
-/// /////////////////////////////////
-// router.get('/dining', async (req, res) => {
-// try {
-//   const halls = await db.DiningHall.findAll();
-//   const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
-//   res.json(reply);
-// } catch (err) {
-//   console.error(err);
-//   res.error('Server error');
-// }
-// });
-
-// router.get('/dining/:hall_id', async (req, res) => {
-//   try {
-//     const hall = await db.DiningHall.findAll({
-//       where: {
-//         hall_id: req.params.hall_id
-//       }
-//     });
-
-//     res.json(hall);
-//   } catch (err) {
-//     console.error(err);
-//     res.error('Server error');
-//   }
-// });
-
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
-  try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
-    });
-    res.json(newDining);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-// router.delete('/dining/:hall_id', async (req, res) => {
-//   try {
-//     await db.DiningHall.destroy({
-//       where: {
-//         hall_id: req.params.hall_id
-//       }
-//     });
-//     res.send('Successfully Deleted');
-//   } catch (err) {
-//     console.error(err);
-//     res.error('Server error');
-//   }
-// });
-
-// router.put('/dining', async (req, res) => {
-//   try {
-//     await db.DiningHall.update(
-//       {
-//         hall_name: req.body.hall_name,
-//         hall_location: req.body.hall_location
-//       },
-//       {
-//         where: {
-//           hall_id: req.body.hall_id
-//         }
-//       }
-//     );
-//     res.send('Successfully Updated');
-//   } catch (err) {
-//     console.error(err);
-//     res.error('Server error');
-//   }
-// });///
 /// ////////Movie Endpoints//////////
 /// /////////////////////////////////
 router.get('/movie', async (req, res) => {
@@ -124,11 +39,11 @@ router.post('/movie', async (req, res) => {
   }
 });
 
-router.get('/movie/:meal_id', async (req, res) => {
+router.get('/movie/:movie_id', async (req, res) => {
   try {
-    const movie = await db.Movie.findAll({
+    const movie = await db.Movies.findAll({
       where: {
-        meal_id: req.params.meal_id
+        movie_id: req.params.movie_id
       }
     });
     res.json(movie);
@@ -146,14 +61,13 @@ router.route('/getBudget')
       const getBudgets = movies.map((movie_title) => {
         const macroEntry = macros.find((macro) => macro.movie_id === movie_title.movie_id);
 
-        console.log('movie_title', movie_title);
+        console.log('movie', movie_title);
         console.log('macroEntry', macroEntry);
         return {
           ...movie_title.dataValues,
           ...macroEntry.movie_financials
         };
       });
-      console.log(getBudgets);
       res.json({data: getBudgets});
     } catch (err) {
       console.error(err);
@@ -186,7 +100,7 @@ router.put('/movie', async (req, res) => {
 /// /////////////////////////////////
 router.get('/macros', async (req, res) => {
   try {
-    const macros = await db.Macros.findAll();
+    const macros = await db.Financials.findAll();
     res.send(macros);
   } catch (err) {
     console.error(err);
@@ -196,7 +110,7 @@ router.get('/macros', async (req, res) => {
 
 router.get('/macros/:movie_id', async (req, res) => {
   try {
-    const movies = await db.Macros.findAll({
+    const movies = await db.Financials.findAll({
       where: {
         movie_id: req.params.movie_id
       }
@@ -211,7 +125,7 @@ router.get('/macros/:movie_id', async (req, res) => {
 router.put('/macros', async (req, res) => {
   try {
     // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
+    await db.Financials.update(
       {
         movie_title: req.body.movie_title,
         budget: req.body.budget,
@@ -260,7 +174,7 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
-const macrosCustom = 'SELECT `INST377_imdb`.`movie`.`movie_id` AS `movie_id`,`INST377_imdb`.`movie`.`movie_title` AS `movie_title`,`INST377_imdb `.`Macros`.`budget` AS `budget`,`INST377_imdb`.`Macros`.`gross` AS `gross`, FROM(`INST377_imdb`.`movie`JOIN `INST377_imdb`.`Macros`)WHERE(`INST377_imdb`.`movie`.`movie_id` = `INST377_imdb`.`Macros`.`movie_id`)';
+const macrosCustom = 'SELECT `INST377_imdb`.`movie`.`movie_id` AS `movie_id`,`INST377_imdb`.`movie`.`movie_title` AS `movie_title`,`INST377_imdb `.`Financials`.`budget` AS `budget`,`INST377_imdb`.`Financials`.`gross` AS `gross`, FROM(`INST377_imdb`.`movie`JOIN `INST377_imdb`.`Fainancials`)WHERE(`INST377_imdb`.`movie`.`movie_id` = `INST377_imdb`.`Financials`.`movie_id`)';
 router.get('/table/data', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(macrosCustom, {
@@ -309,38 +223,17 @@ router.get('/custom', async (req, res) => {
 
 // inst377_imdb database//
 // getting all database records
-router.get('/movie_id', async (req, res) => {
-  try {
-    res.json({message: 'Successfully touched movie'});
-    const movies = await db.Movies.findAll();
-    const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.route('/movieGrossing')
-  .get(async (req, res) => {
-    try {
-      const movies = await db.Movies.findAll();
-      const macros = await db.Macros.findAll();
-      const grossing = movies.map((movie) => {
-        const macroEntry = macros.find((macro) => macro.movie_id === movie.movie_id);
-        console.log('movie', movie);
-        console.log('macroEntry', macroEntry);
-        return {
-          ...movie.dataValues,
-          ...macroEntry.dataValues
-        };
-      });
-      res.json({data: movieGrossing});
-    } catch (err) {
-      console.error(err);
-      res.json({message: 'Something went wrong'});
-    }
-  });
+// router.get('/movie_id', async (req, res) => {
+//   try {
+//     res.json({message: 'Successfully touched movie'});
+//     const movies = await db.Movies.findAll();
+//     const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
+//     res.json(reply);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
 router.route('/actors')
   .get(async (req, res) => {
@@ -504,14 +397,14 @@ router.route('/technicals/:movie_id')
     }
   });
 
-router.get('/custom', async (req, res) => {
-  try {
-    res.json({message: 'Successfully touched custom'});
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+// router.get('/custom', async (req, res) => {
+//   try {
+//     res.json({message: 'Successfully touched custom'});
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
 router.route('/movies')
   .get(async (req, res) => {
