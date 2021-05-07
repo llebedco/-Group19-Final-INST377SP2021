@@ -37,7 +37,38 @@
     <div class="container">
         <ul class="flex-outer">
             <li>
-                <h3>Add Entry</h3>
+            <h3>Add Entry</h3>
+
+            <form action="/api" method="post"></form>
+            <ul>
+                <li>
+                    <label for="moviename">Movie Name:</label>
+                    <input type="text" id="mname" name="mname"> 
+                </li>
+                <li>
+                    <label for="actor1">Actor1:</label>
+                    <input type="text" id="actor1" name="actor1">
+                </li>
+                <li>
+                    <label for="actor2">Actor 2:</label>
+                    <input type="text" id="actor2" name="actor2">
+                </li>
+                <li>
+                    <label for="actor3">Actor 3:</label>
+                    <input type="text" id="actor3" name="actor3">
+                </li>
+                <li>
+                    <label for="fin">Financials:</label>
+                    <input type="text" id="fin" name="fin">
+                </li>
+                <li>
+                    <label for="fb">Facebook Likes:</label>
+                    <input type="text" id="fb" name="fb">
+                </li>
+                <input type="submit" value="SUBMIT FORM">
+            </ul>
+
+            <!--
             <li>
                 <label for="moviename">Movie Name:</label>
                 <input type="text" id="mname" name="mname">
@@ -67,6 +98,7 @@
             <form action="/api" method="post">
                 <button type="submit" id="submit" name="btn btn-primary">ADD</button>
             </form>
+            -->
 
             <h3>Edit Entry</h3>
             <li>
