@@ -141,7 +141,7 @@ router.get('/movie/:meal_id', async (req, res) => {
 router.route('/getBudget')
   .get(async (req, res) => {
     try {
-      const movies = await db.Movies.findAll({include: db.Financials});
+      const movies = await db.Movies.findAll();
       const macros = await db.Financials.findAll();
       const getBudgets = movies.map((movie_title) => {
         const macroEntry = macros.find((macro) => macro.movie_id === movie_title.movie_id);
@@ -150,7 +150,7 @@ router.route('/getBudget')
         console.log('macroEntry', macroEntry);
         return {
           ...movie_title.dataValues,
-          ...macroEntry.dataValues
+          ...macroEntry.movie_financials
         };
       });
       console.log(getBudgets);
