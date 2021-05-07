@@ -58,14 +58,14 @@ router.route('/getBudget')
     try {
       const movies = await db.Movies.findAll();
       const macros = await db.Financials.findAll();
+      console.log(macros);
       const getBudgets = movies.map((movie_title) => {
         const macroEntry = macros.find((macro) => macro.movie_id === movie_title.movie_id);
-
         console.log('movie', movie_title);
         console.log('macroEntry', macroEntry);
         return {
           ...movie_title.dataValues,
-          ...macroEntry.movie_financials
+          ...macroEntry.movie_financials.dataValues
         };
       });
       res.json({data: getBudgets});
