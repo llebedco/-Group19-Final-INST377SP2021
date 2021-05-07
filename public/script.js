@@ -31,7 +31,7 @@ async function windowActions() {
   const f = results.data;
 } window.onload = windowActions;
 
-function getRandomInt(max) {
+function getRandomIntInclusive(max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * max);
 }
@@ -115,8 +115,10 @@ async function windowActions() {
           { label: selectedMovies[9].movie_title, y: selectedMovies[9].budget }
         ]
       }, 
+    ]
     });
 
+    
     chart.render();
     function toggleDataSeries(e) {
       if (typeof (e.dataSeries.visible) === 'undefined' || e.DataSeries.visible) {
