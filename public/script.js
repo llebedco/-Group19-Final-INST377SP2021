@@ -58,7 +58,6 @@ async function windowActions() {
   selectedMovies.forEach((element) => {
     const rows = document.createElement('tr');
     rows.innerHTML = `
-      <td>${element.movie_id}</td>
       <td>${element.movie_title}</td>
       <td>${element.budget}</td>
       <td>${element.gross}</td>`;
