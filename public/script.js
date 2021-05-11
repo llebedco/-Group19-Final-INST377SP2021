@@ -9,27 +9,27 @@
 //   const a = results.data;
 // } window.onload = windowActions;
 
-// async function getMovie() {
-//   const request = await fetch('/api');
-//   const moviesData = await request.json();
-//   return moviesData;
-// }
+async function getMovie() {
+  const request = await fetch('/api');
+  const moviesData = await request.json();
+  return moviesData;
+}
 
-// async function windowActions() {
-//   const result = await getMovie();
-//   const m = result.data;
-// } window.onload = windowActions;
+async function windowActions() {
+  const result = await getMovie();
+  const m = result.data;
+} window.onload = windowActions;
 
-// async function getFinance() {
-//   const request = await fetch('/api');
-//   const financeData = await request.json();
-//   return financeData;
-// }
+async function getFinance() {
+  const request = await fetch('/api');
+  const financeData = await request.json();
+  return financeData;
+}
 
-// async function windowActions() {
-//   const result = await getFinance();
-//   const f = results.data;
-// } window.onload = windowActions;
+async function windowActions() {
+  const result = await getFinance();
+  const f = results.data;
+} window.onload = windowActions;
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
@@ -38,7 +38,7 @@ function getRandomIntInclusive(min, max) {
 }
 
 async function getMovies() {
-  const request = await fetch('api/getBudget');
+  const request = await fetch('/api/getBudget');
   const moviesData = await request.json();
   return moviesData;
 }
@@ -117,7 +117,7 @@ async function windowActions() {
           { label: selectedMovies[8].movie_title, y: selectedMovies[8].budget },
           { label: selectedMovies[9].movie_title, y: selectedMovies[9].budget }
         ]
-      },
+      }
       ]
     });
 
@@ -134,4 +134,4 @@ async function windowActions() {
   return selectedMovies;
 }
 
-window.onload = windowActions
+window.onload = windowActions;
