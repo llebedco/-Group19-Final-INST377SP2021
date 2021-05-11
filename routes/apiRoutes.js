@@ -29,10 +29,10 @@ router.post("/movie", async (req, res) => {
   try {
     const newMovie = await db.Movies.create({
       movie_id: currentId,
-      movie_title: req.body.movie_title,
-      director_name: req.body.director_name,
-      title_year: req.body.title_year,
-      country: req.body.country,
+      movie_title: req.body.mTitle,
+      director_name: req.body.mDirector,
+      title_year: req.body.mYear,
+      country: req.body.mCountry,
     });
     res.json(newMovie);
   } catch (err) {
