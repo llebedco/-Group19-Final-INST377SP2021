@@ -10,7 +10,8 @@ https://group19-final-inst377.herokuapp.com/
 * iOS
 
 ## Links
-*https://github.com/llebedco/-Group19-Final-INST377SP2021#developer-manual
+* https://github.com/llebedco/-Group19-Final-INST377SP2021#developer-manual
+* https://group19-final-inst377.herokuapp.com/documentation.html
 
 # Developer Manual
 
@@ -33,15 +34,10 @@ The are no prewritten tests in the source repository, but you can use Cypress to
 3. In the second terminal run `npm test`.
 
 ## Server application APIs
-/api - API route for 
+/api - API route for Movie data
 
-* GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
-* POST - 
-* PUT - returns response 'Got a PUT request at /api'.
-
-
-* GET - Logs to console response query from URL. returns response 'Got a GET request from /api'. 
-* POST -  
+* GET - logs to console response query from URL. returns response 'Got a GET request from /api'.
+* POST - obtains movie id from request body to fetch url. fetch data json from Movie Metadata API and returns JSON response.
 * PUT - returns response 'Got a PUT request at /api'.
 
 ## Known Bugs and Future Development
