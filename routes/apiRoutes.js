@@ -9,11 +9,8 @@ const router = express.Router();
 router.get("/", (req, res) => {
   res.send("Welcome to the IMDB API!");
 });
-
-/// /////////////////////////////////
 /// ////////Movie Endpoints//////////
 /// /////////////////////////////////
-
 router.get("/movie", async (req, res) => {
   try {
     const movies = await db.Movies.findAll();
@@ -41,21 +38,7 @@ router.post("/movie", async (req, res) => {
     res.json(newMovie);
   } catch (err) {
     console.error(err);
-    res.error("Server Error");
-  }
-});
-
-router.delete("/movie/:movie_id", async (req, res) => {
-  try {
-    await db.Movies.destroy({
-      where: {
-        movie_id: req.params.mId,
-      },
-    });
-    res.send("Successfully Deleted");
-  } catch (err) {
-    console.error(err);
-    res.error("Server Error");
+    res.error("Server error");
   }
 });
 
@@ -98,10 +81,29 @@ router.route("/getBudget").get(async (req, res) => {
   }
 });
 
+// router.put('/movie', async (req, res) => {
+//   try {
+//     await db.Movies.update(
+//       {
+//         movie_title: req.body.movie_title,
+//         gross: req.body.gross
+//       },
+//       {
+//         where: {
+//           movie_id: req.body.movie_id
+//         }
+//       }
+//     );
+//     // res.send('Movie Successfully Updated');
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
 /// /////////////////////////////////
 /// ////////Macros Endpoints/////////
 /// /////////////////////////////////
-
 router.get("/macros", async (req, res) => {
   try {
     const macros = await db.Financials.findAll();
@@ -111,6 +113,133 @@ router.get("/macros", async (req, res) => {
     res.error("Server error");
   }
 });
+
+// router.get('/macros/:movie_id', async (req, res) => {
+//   try {
+//     const movies = await db.Financials.findAll({
+//       where: {
+//         movie_id: req.params.movie_id
+//       }
+//     });
+//     res.json(movies);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+// router.put('/macros', async (req, res) => {
+//   try {
+//     // N.B. - this is a good example of where to use code validation to confirm objects
+//     await db.Financials.update(
+//       {
+//         movie_title: req.body.movie_title,
+//         budget: req.body.budget,
+//         gross: req.body.gross
+//       },
+//       {
+//         where: {
+//           movie_id: req.body.movie_id
+//         }
+//       }
+//     );
+//     res.send('Successfully Updated');
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+/// /////////////////////////////////
+/// Dietary Restrictions Endpoints///
+/// /////////////////////////////////
+// router.get('/restrictions', async (req, res) => {
+//   try {
+//     const restrictions = await db.DietaryRestrictions.findAll();
+//     res.json(restrictions);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+// router.get('/restrictions/:restriction_id', async (req, res) => {
+//   try {
+//     const restrictions = await db.DietaryRestrictions.findAll({
+//       where: {
+//         restriction_id: req.params.restriction_id
+//       }
+//     });
+//     res.json(restrictions);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+/// //////////////////////////////////
+/// ///////Custom SQL Endpoint////////
+/// /////////////////////////////////
+// const macrosCustom = 'SELECT `INST377_imdb`.`movie`.`movie_id` AS `movie_id`,`INST377_imdb`.`movie`.`movie_title` AS `movie_title`,`INST377_imdb `.`Financials`.`budget` AS `budget`,`INST377_imdb`.`Financials`.`gross` AS `gross`, FROM(`INST377_imdb`.`movie`JOIN `INST377_imdb`.`Fainancials`)WHERE(`INST377_imdb`.`movie`.`movie_id` = `INST377_imdb`.`Financials`.`movie_id`)';
+// router.get('/table/data', async (req, res) => {
+//   try {
+//     const result = await db.sequelizeDB.query(macrosCustom, {
+//       type: sequelize.QueryTypes.SELECT
+//     });
+//     res.json(result);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+// const mealMapCustom = `SELECT _name,
+//   hall_address,
+//   hall_lat,
+//   hall_long,
+//   meal_name
+// FROM
+//   movie m
+// INNER JOIN movie_Locations ml
+//   ON m.meal_id = ml.meal_id
+// INNER JOIN Dining_Hall d
+// ON d.hall_id = ml.hall_id;`;
+// router.get('/map/data', async (req, res) => {
+//   try {
+//     const result = await db.sequelizeDB.query(mealMapCustom, {
+//       type: sequelize.QueryTypes.SELECT
+//     });
+//     res.json(result);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+// router.get('/custom', async (req, res) => {
+//   try {
+//     const result = await db.sequelizeDB.query(req.body.query, {
+//       type: sequelize.QueryTypes.SELECT
+//     });
+//     res.json(result);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+// inst377_imdb database//
+// getting all database records
+// router.get('/movie_id', async (req, res) => {
+//   try {
+//     res.json({message: 'Successfully touched movie'});
+//     const movies = await db.Movies.findAll();
+//     const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
+//     res.json(reply);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
 router.route("/actors").get(async (req, res) => {
   try {
@@ -276,6 +405,15 @@ router.route("/technicals/:movie_id").get(async (req, res) => {
     res.error("Server error");
   }
 });
+
+// router.get('/custom', async (req, res) => {
+//   try {
+//     res.json({message: 'Successfully touched custom'});
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
 router.route("/movies").get(async (req, res) => {
   try {
