@@ -65,7 +65,7 @@ async function windowActions() {
     const chart = new CanvasJS.Chart('chartContainer', {
       animationEnabled: true,
       title: {
-        text: 'Highest Grossing Movies'
+        text: 'Gross vs Budget'
       },
       axisX: {
         valueFormatString: ''
