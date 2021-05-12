@@ -7,9 +7,11 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 const staticFolder = 'public';
+const methodOverride = require('method-override')
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(methodOverride('_method'))
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
 
