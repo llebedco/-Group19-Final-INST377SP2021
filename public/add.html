@@ -5,31 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="addpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 
 <body>
-    <nav>
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fas fa-bars"></i>
-        </label>
-        <label class="logo">Add/Edit</label>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="movies.html">Movies</a></li>
-            <li><a href="documentation.html">Documentation</a></li>
-            <li><a href="about.html">About us</a>
-            <li>
-                <form class="block form" id="search-form" action="">
-                    <label>Search
-                        <input placeholder="" type="text" name="search" id="search">
-                    </label>
-                    <button type="submit" id="submit" name="">SUBMIT</button>
-                </form>
-            </li>
-        </ul>
+    <nav class="top-bar fixed">
+        <label class="logo">ABOUT US</label>
+        <a href="index.html" style='color: white;
+        font-size: 20px;
+        padding: 7px 13px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        float:right;
+        font-family: 'Cinzel Decorative', cursive;
+        '>Home</a>
     </nav>
     <div class="container">
         <form action="/api/movie" method="post">
