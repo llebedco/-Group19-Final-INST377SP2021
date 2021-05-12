@@ -5,7 +5,7 @@ html, body {
 
 body {
   width: 100%;
-  min-width: 500px;
+  min-width: 700px;
   margin: 0 auto;
   font: normal 15px/1.5 "Fira Sans", "Times New Roman", sans-serif;
   background: url(../images/bgimg.jpg) no-repeat;
@@ -122,7 +122,7 @@ nav ul li label{
     font-size: 16px;
   }
 }
-@media (max-width: 858px){
+@media (max-width: 825px){
   .checkbtn{
     display: block;
   }
