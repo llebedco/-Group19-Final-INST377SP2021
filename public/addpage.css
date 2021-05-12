@@ -1,0 +1,260 @@
+html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    width: 100%;
+    min-width: 700px;
+    margin: 0 auto;
+    font: normal 15px/1.5 "Fira Sans", "Times New Roman", sans-serif;
+    background: url(../images/bgimg.jpg) no-repeat;
+    background-size: cover;
+    height:cover;
+    color:rgb(0, 0, 0) ;
+    padding: 50px 0;
+  }
+  
+  h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    color: #2a2a2a;
+  }
+  
+  p, input, li {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #2a2a2a;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 80;
+    flex: 5;
+    text-transform: uppercase;
+  }
+  
+  h2 {
+      position: absolute center;
+      font-size: 2pt;
+  }
+  
+  h3 {
+    position: relative;
+    font-size: 2rem;
+  }
+  
+  h4 {
+    position: absolute center;
+    font-size: 2rem;
+  }
+  
+  h5 {
+    position: relative;
+    font-size: 5mm;
+    text-decoration: underline;
+  }
+  
+  .header {
+    margin-bottom: 10px;
+    display: flex;
+    flex-flow: row wrap;
+  }
+  
+  nav{
+    font-family: 'Cinzel Decorative', cursive;
+    background:black;
+    height: 80px;
+    width: 100%;
+    z-index:10000
+  }
+  label.logo{
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 100px;
+    font-weight: bold;
+  }
+  nav ul{
+    float: right;
+    margin-right: 20px;
+    z-index:9999
+  }
+  nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+  }
+  nav ul li a{
+    color: white;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+  a.active,a:hover{
+    background: whitesmoke;
+    transition: .5s;
+  }
+  
+  nav ul li label{
+    font-size: 17px;
+    color:white;
+  
+  }
+  .checkbtn{
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+  }
+  #check{
+    display: none;
+  }
+  
+    nav ul li{
+      display: block;
+      margin: 50px 0;
+      line-height: 30px;
+    }
+    nav ul li a{
+      font-size: 20px;
+    }
+    a:hover,a.active{
+      background: none;
+      color: #0082e6;
+    }
+    #check:checked ~ ul{
+      left: 0;
+    }
+
+
+  .column {
+    width: 80%;
+    max-width: 1200px;
+    margin: 50px 10px;
+    padding: 50px;
+  }
+  
+  .movies {
+    padding: 50px;
+    display: inline-block;
+    margin: 100px 50px;
+  }
+  
+  .chart {
+    padding: 40px;
+    display: inline-block;
+    margin: 10px 50px;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .content {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+  
+  .suggestion {
+    position: relative;
+    font-size: 30px;
+  }
+  .content a{
+    color: #eee;
+  } 
+  
+  .footer {
+    position: relative;
+    left: 0;
+    bottom: -80;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    text-align: center;
+  }
+  
+  .container {
+    width: 80%;
+    max-width: 600px;
+    margin: 0 center;
+  }
+  
+  .container * {
+    box-sizing: border-box;
+  }
+  
+  .flex-outer,
+  .flex-inner {
+  list-style-type: none;
+  padding: 0;
+  }
+  
+  .flex-outer {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .flex-outer li,
+  .flex-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  }
+  
+  flex-inner {
+    padding: 0 8px;
+    justify-content: space-between;
+    
+  }
+  
+  .flex-outer > li:not(:last-child) {
+    margin-bottom: 20px;
+  }
+  
+  .flex-outer > li > label,
+  .flex-outer li p {
+  flex: 1 0 100px;
+  max-width: 100px;
+  }
+  
+  .flex-outer > li > label + *,
+  .flex-inner {
+  flex: 1 0 220px;
+  }
+  
+  .flex-outer li p {
+    margin: 0;
+  }
+  
+  .flex-outer li input:not([type='checkbox']),
+  .flex-outer li textarea {
+    padding: 10px;
+    line-height: 1;
+    border: none;
+    display: block;
+       
+  }
+  
+  .flex-outer li button {
+    margin-left: auto;
+    padding: 8px 16px;
+    border: none;
+    background: #333;
+    color: #f2f2f2;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    border-radius: 2px;
+  }
+  
+  .flex-inner {
+    flex-wrap: nowrap;
+  }
