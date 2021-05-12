@@ -1,13 +1,16 @@
 # Movie Metadata
 ## Description
 The information problem we are hoping to solve is the question of which movies are the most economically successful based on their box office earnings accumulated from their screening cycles. 
+
+## Link to Website
+https://group19-final-inst377.herokuapp.com/
  
 ## Target Browsers
 * Windows 10
 * iOS
 
 ## Links
-https://group19-final-inst377.herokuapp.com/
+
 
 # Developer Manual
 
