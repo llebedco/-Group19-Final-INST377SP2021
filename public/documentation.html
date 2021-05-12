@@ -22,6 +22,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="movies.html">Movies</a></li>
             <li><a href="add.html">Add/Edit</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
             <li><a href="about.html">About us</a>
             <li>
                 <form class="block form" id="search-form" action="">
@@ -32,14 +33,25 @@
             </li>
         </ul>
     </nav>
-    <div class="tab-pane fade show active" id="pills-user" role="tabpanel" aria-labelledby="pills-user-tab">
+    <div id="chartContainer" style="height: 100px; width: 100%;margin-top: 0px"></div>
+    <div class="tab-pane fade show active" id="pills-user" role="tabpanel" aria-labelledby="pills-user-tab" style="padding-left: 20px; padding-right: 20px">
         <h4>User Manual</h4>
         <h5>Home</h5>
-        <p>Use the home page to navigate our web application. 
-            The main navigation consists of a search function, an add/edit page, documentation, and about us.</p>
+        <p>Use the home page to navigate our web application. The main navigation consists of schedule search,
+            documentation, and about.</p>
+        <h5>Add/Edit</h5>
+        <p>Use the three functions provided to wither add, edit, or delete a movie 
+            to the database. When adding or editing a movie the following information 
+            is necissary for identification: movie title, movie director, release 
+            year, and the country of origin. When deleting a movie all that is 
+            necissary is the movie title. When finished filling the fields, click 
+            or tap the button below the section to submit your changes.
+        </p>
+
     </div>
+    
     <hr>
-    <div class="tab-pane fade show active" id="pills-dev" role="tabpanel" aria-labelledby="pills-dev-tab">
+    <div class="tab-pane fade show active" id="pills-dev" role="tabpanel" aria-labelledby="pills-dev-tab" style="padding-left: 20px; padding-right: 20px">
         <h4>Developer Manual</h4>
         <h5>How to install application and all dependencies</h5>
         <p>
@@ -79,8 +91,22 @@
         <p>
             3. In the second terminal run npm test
         </p>
+        <h5>Potential Bugs:</h5>
+        <p>Given the amount of data extracted from the Internet Movie Database,
+            data cleaning has a high probability of being imperfect. As a side 
+            effect, some movies may show flaws that automated data cleaning 
+            procedures were unable to identify. Future database modifications 
+            may need to be implemented.
+        </p>
         <h5>Future Development:</h5>
-        <p></p>
+        <p>Incorporating new movies that have released after the database was 
+            extracted would help keep the website current. Adding new columns to 
+            the data from other sources, such as Rotten Tomatoes or MetaCritic, 
+            could be a better gague upon audience reception, bolstering the 
+            financial success. Lastly, adding more options to filter through 
+            movies, perhaps with genre and actors, would be a beneficial approach 
+            to helping a user find what they are looking for.
+        </p>
 
         <p> </p>
         <div class="footer">

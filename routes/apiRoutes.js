@@ -9,6 +9,8 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.send('Welcome to the IMDB API!');
 });
+
+/// /////////////////////////////////
 /// ////////Movie Endpoints//////////
 /// /////////////////////////////////
 router.get('/movie', async (req, res) => {
@@ -22,8 +24,8 @@ router.get('/movie', async (req, res) => {
   }
 });
 
-router.post('/movie', async (req, res) => {
-  console.info('Post request to /movie', req.body);
+router.post("/movie", async (req, res) => {
+  console.info("Post request to /movie", req.body);
   const movies = await db.Movies.findAll();
   const currentId = (await movies.length) + 1;
   try {
@@ -93,7 +95,7 @@ router.get('/macros', async (req, res) => {
   }
 });
 
-router.route('/actors').get(async (req, res) => {
+router.route("/actors").get(async (req, res) => {
   try {
     const actors = await db.Actors.findAll({});
     const reply = actors.length > 0 ? { data: actors } : { message: 'no results found' };
@@ -252,16 +254,7 @@ router.route('/technicals/:movie_id').get(async (req, res) => {
   }
 });
 
-// router.get('/custom', async (req, res) => {
-//   try {
-//     res.json({message: 'Successfully touched custom'});
-//   } catch (err) {
-//     console.error(err);
-//     res.error('Server error');
-//   }
-// });
-
-router.route('/movies').get(async (req, res) => {
+router.route("/movies").get(async (req, res) => {
   try {
     const movies = await db.Movies.findAll({});
     const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };

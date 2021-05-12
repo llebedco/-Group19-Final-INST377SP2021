@@ -1,106 +1,126 @@
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="addpage.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <link rel="stylesheet" href="addpage.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-</head>
-
-<body>
+  <body>
     <nav class="top-bar fixed">
-        <label class="logo">ADD/EDIT</label>
-        <a href="index.html" style='color: white;
-        font-size: 20px;
-        padding: 7px 13px;
-        border-radius: 3px;
-        text-transform: uppercase;
-        float:right;
-        font-family: "Cinzel Decorative", cursive;
-        '>Home</a>
+      <label class="logo">ADD/EDIT</label>
+      <a
+        href="index.html"
+        style="
+          color: white;
+          font-size: 20px;
+          padding: 7px 13px;
+          border-radius: 3px;
+          text-transform: uppercase;
+          float: right;
+          font-family: 'Cinzel Decorative', cursive;
+        "
+        >Home</a
+      >
     </nav>
+    <div
+      id="chartContainer"
+      style="height: 100px; width: 100%; margin-top: 0px"
+    ></div>
     <div class="container">
-        <form action="/api/movie" method="post">
-            <ul class="flex-outer">
-                <li>
-                    <h3>Add</h3>
-                </li>
-                <li>
-                    <label for="mTitle">Movie Title:</label>
-                    <input type="text" id="mTitle" name="mTitle"/> 
-                </li>
-                <li>
-                    <label for="mDirector">Director:</label>
-                    <input type="text" id="mDirector" name="mDirector"/>
-                </li>
-                <li>
-                    <label for="mYear">Release Year:</label>
-                    <input type="text" id="mYear" name="mYear"/>
-                </li>
-                <li>
-                    <label for="mCountry">Country:</label>
-                    <input type="text" id="mCountry" name="mCountry"/>
-                </li>
-                <li>
-                <button type="submit" id="submit" name="btn btn-primary">SUBMIT FORM</button>
-                </li>
-            </ul>   
-        </form>
+      <form action="/api/movie" method="post">
+        <ul class="flex-outer">
+          <li>
+            <h3>Add</h3>
+          </li>
+          <li>
+            <label for="mTitle">Movie Title:</label>
+            <input type="text" id="mTitle" name="mTitle" />
+          </li>
+          <li>
+            <label for="mDirector">Director:</label>
+            <input type="text" id="mDirector" name="mDirector" />
+          </li>
+          <li>
+            <label for="mYear">Release Year:</label>
+            <input type="text" id="mYear" name="mYear" />
+          </li>
+          <li>
+            <label for="mCountry">Country:</label>
+            <input type="text" id="mCountry" name="mCountry" />
+          </li>
+          <li>
+            <button type="submit" id="submit" name="btn btn-primary">
+              SUBMIT FORM
+            </button>
+          </li>
+        </ul>
+      </form>
     </div>
 
     <div class="container">
-        <form action="/api/movie" method="post">
-            <ul class="flex-outer">
-                <li>
-                    <h3>Edit</h3>
-                </li>
-                <li>
-                    <label for="mTitle">Movie Title:</label>
-                    <input type="text" id="mTitle" name="mTitle"/> 
-                </li>
-                <li>
-                    <label for="mDirector">Director:</label>
-                    <input type="text" id="mDirector" name="mDirector"/>
-                </li>
-                <li>
-                    <label for="mYear">Release Year:</label>
-                    <input type="text" id="mYear" name="mYear"/>
-                </li>
-                <li>
-                    <label for="mCountry">Country:</label>
-                    <input type="text" id="mCountry" name="mCountry"/>
-                </li>
-                <li>
-                    <button type="submit" id="submit" name="btn btn-primary">EDIT FORM</button>
-                </li>
-            </ul>   
-        </form>
+      <form action="/api/movie" method="post">
+        <ul class="flex-outer">
+          <li>
+            <h3>Edit</h3>
+          </li>
+          <li>
+            <label for="mTitle">Movie Title:</label>
+            <input type="text" id="mTitle" name="mTitle" />
+          </li>
+          <li>
+            <label for="mDirector">Director:</label>
+            <input type="text" id="mDirector" name="mDirector" />
+          </li>
+          <li>
+            <label for="mYear">Release Year:</label>
+            <input type="text" id="mYear" name="mYear" />
+          </li>
+          <li>
+            <label for="mCountry">Country:</label>
+            <input type="text" id="mCountry" name="mCountry" />
+          </li>
+          <li>
+            <button type="submit" id="submit" name="btn btn-primary">
+              EDIT FORM
+            </button>
+          </li>
+        </ul>
+      </form>
     </div>
 
     <div class="container">
-        <form action="/api/movie" method="post">
-            <ul class="flex-outer">
-                <li>
-                    <h3>Delete</h3>
-                </li>
-                <li>
-                    <label for="mTitle">Movie Title:</label>
-                    <input type="text" id="mTitle" name="mTitle"/> 
-                </li>
-                <li>
-                    <button type="submit" id="submit" name="btn btn-primary">DELETE</button>
-                </li>
-
-            </ul>   
-        </form>
+      <form action="/api/movie" method="post">
+        <ul class="flex-outer">
+          <li>
+            <h3>Delete</h3>
+          </li>
+          <li>
+            <label for="mTitle">Movie Title:</label>
+            <input type="text" id="mTitle" name="mTitle" />
+          </li>
+          <li>
+            <button type="submit" id="submit" name="btn btn-primary">
+              DELETE
+            </button>
+          </li>
+        </ul>
+      </form>
     </div>
 
     <div class="footer">
-        <p>Group 19: Jacob McIntosh, Larisa Lebedco, Olivia Dissen, Thomas Marmo, Ziyang Lan</p>
+      <p>
+        Group 19: Jacob McIntosh, Larisa Lebedco, Olivia Dissen, Thomas Marmo,
+        Ziyang Lan
+      </p>
     </div>
-
-</body>
-
+  </body>
 </html>
