@@ -10,8 +10,8 @@ https://group19-final-inst377.herokuapp.com/
 * iOS
 
 ## Links
-* https://github.com/llebedco/-Group19-Final-INST377SP2021#developer-manual
-* https://group19-final-inst377.herokuapp.com/documentation.html
+* [Developer Manual](https://github.com/llebedco/-Group19-Final-INST377SP2021#developer-manual)
+* [User Manual](https://group19-final-inst377.herokuapp.com/documentation.html)
 
 # Developer Manual
 
