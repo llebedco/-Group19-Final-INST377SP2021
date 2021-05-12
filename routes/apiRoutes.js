@@ -278,19 +278,34 @@ router.route('/movies/:movie_id').get(async (req, res) => {
     res.error('Server error');
   }
 });
-
-async function getTitle() {
-  const repsonse = await fetch('http://localhost:3000/api/Movies')
-    .then((response) => response.json())
-    .then((movie) => showMovie(movie.results));
-  showMovie = (movie) => {
-    const movieDiv = document.querySelector('#movie_title');
-    movie.forEach((movie) => {
-      const movieElement = document.createElement('p');
-      movieElement.innerText = `Title: ${movie_title.name}`;
-      movieDiv.append(movieElement);
+router.route('/movies/:movie_title').get(async (req, res) => {
+  try {
+    const movies = await db.Movies.findAll({
+      where: {
+        movie_title: req.params.movie_title
+      }
     });
-  };
-}
+    res.json(movies);
+    console.log('test')
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+// async function getTitle() {
+//   const repsonse = await fetch('http://localhost:3000/api/movies')
+//     .then((response) => response.json())
+//     .then((movie) => showMovie(movie.results));
+//   showMovie = (movie) => {
+//     const movieDiv = document.querySelector('#movie_title');
+//     movie.forEach((movie) => {
+//       const movieElement = document.createElement('p');
+//       movieElement.innerText = `Title: ${movie_title.name}`;
+//       movieDiv.append(movieElement);
+//     });
+//   };
+
+
+// }
 
 export default router;

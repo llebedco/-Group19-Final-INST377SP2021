@@ -1,0 +1,77 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <link rel="icon" href="favicon.png" />
+    <style>
+      th,
+      td {
+        border: 1px solid #999;
+        padding: 8px;
+      }
+      table {
+        width: 800px;
+        margin: 50px auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="top-bar fixed">
+      <input type="checkbox" id="check" />
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <label class="logo">Search Page</label>
+
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="movies.html">Movies</a></li>
+        <li><a href="add.html">Add/Edit</a></li>
+        <li><a href="documentation.html">Documentation</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li><li><a href="search.html">Search Page</a></li>
+      </ul>
+    </nav>
+    <div id="chartContainer" style="height: 100px; width: 100%;margin-top: 100px"></div>
+    <h1>Tips: Enter the name of movie you want to search for.</h1>
+    <br>
+    <h1>Press Enter, and wait for a second.</h1>
+    <br>
+    <form class="block form" id="search-form" >
+            <label>Search
+              <input
+                placeholder=""
+                type="text"
+                name="movie_title"
+                id="search"
+              />
+            </label>
+            <!--<button type="button" id="submit" name="">SUBMIT</button>-->
+          </form>
+    <div>
+      <table>
+        <thead>
+          <th>movie_title</th>
+          <th>director_name</th>
+          <th>title_year</th>
+          <th>country</th>
+        </thead>
+        <tbody id="movie_title"></tbody>
+      </table>
+    </div>
+    <script src="result.js"></script>
+  </body>
+</html>
