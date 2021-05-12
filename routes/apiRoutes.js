@@ -24,15 +24,16 @@ router.get("/movie", async (req, res) => {
 });
 
 router.post("/movie", async (req, res) => {
+  console.info('Post request to /movie', req.body);
   const movies = await db.Movies.findAll();
   const currentId = (await movies.length) + 1;
   try {
     const newMovie = await db.Movies.create({
       movie_id: currentId,
-      movie_title: req.body.movie_title,
-      director_name: req.body.director_name,
-      title_year: req.body.title_year,
-      country: req.body.country,
+      movie_title: req.body.mTitle,
+      director_name: req.body.mDirector,
+      title_year: req.body.mYear,
+      country: req.body.mCountry,
     });
     res.json(newMovie);
   } catch (err) {
@@ -77,44 +78,6 @@ router.route("/getBudget").get(async (req, res) => {
   } catch (err) {
     console.error(err);
     res.json({ message: "Something went wrong" });
-  }
-});
-
-router.delete("/movie/:movie_id", async (req, res) => {
-  try {
-    await db.Movies.destroy({
-      where: {
-        movie_id: req.params.movie_id,
-      },
-    });
-    res.send("Successfully Deleted");
-  } catch (err) {
-    console.error(err);
-    res.error("Server Error");
-  }
-});
-
-router.put("/movie", async (req, res) => {
-  try {
-    await db.Movies.update(
-      {
-        movie_title: req.body.movie_title,
-        actor_1_name: req.body.actor_1_name,
-        actor_2_name: req.body.actor_2_name,
-        actor_3_name: req.body.actor_3_name,
-        gross: req.body.gross,
-        movie_facebook_likes: req.body.movie_facebook_likes,
-      },
-      {
-        where: {
-          movie_id: req.params.movie_id,
-        },
-      }
-    );
-    res.send("Successfully Updated");
-  } catch (err) {
-    console.error(err);
-    res.error("Server Error");
   }
 });
 
